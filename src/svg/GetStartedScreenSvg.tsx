@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import type {SvgProps} from 'react-native-svg';
-import Svg, {Path, Stop, Defs, LinearGradient, Rect} from 'react-native-svg';
+import React, { FC } from "react";
+import type { SvgProps } from "react-native-svg";
+import Svg, { Path, Stop, Defs, LinearGradient, Rect } from "react-native-svg";
 
-export const IntroductionScreenSvg: FC<SvgProps> = ({
+export const GetStartedScreenSvg: FC<SvgProps> = ({
   width = 370,
   height = 300,
 }) => {
@@ -11,7 +11,8 @@ export const IntroductionScreenSvg: FC<SvgProps> = ({
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
-      fill="none">
+      fill="none"
+    >
       <Path
         d="M39.2724 239.276C39.2724 239.276 40.2839 209.926 27.7343 147.584C15.1847 85.2425 42.1055 54.2737 80.3606 51.642C118.616 49.0104 115.783 46.5824 153.026 24.5188C190.27 2.45531 222.858 12.3743 254.433 36.4608C286.009 60.5474 287.021 77.9497 287.021 115.607C287.021 153.265 312.12 99.8195 337.422 115.607C362.724 131.395 327.301 241.506 327.301 241.506L39.2724 239.276Z"
         fill="#C2D8F2"
@@ -1045,7 +1046,8 @@ export const IntroductionScreenSvg: FC<SvgProps> = ({
           y1="146.017"
           x2="266.362"
           y2="235.959"
-          gradientUnits="userSpaceOnUse">
+          gradientUnits="userSpaceOnUse"
+        >
           <Stop stopColor="#EAF4F8" />
           <Stop offset="1" stopColor="#9ECEDE" />
         </LinearGradient>

@@ -1,16 +1,16 @@
 import React, { FC } from "react";
-import { styles } from "./IntroductionScreen.style";
-import { TIntroductionScreenViewProps } from "./IntroductionScreen.type";
-import { Screen, Button, Section, Text, size } from "../../components";
-import { IntroductionScreenSvg } from "../../svg";
+import { styles } from "./GetStartedScreen.style";
+import { TGetStartedViewProps } from "./GetStartedScreen.type";
+import { Screen, Button, Section, Text, size } from "@components";
+import { GetStartedScreenSvg } from "@svg";
 
-export const IntroductionScreenView: FC<TIntroductionScreenViewProps> = ({
+export const GetStartedScreenView: FC<TGetStartedViewProps> = ({
   onPressIntroduction,
 }) => {
   return (
     <Screen isScrollViewDisabled>
       <Section containerStyle={styles.svgContainer} bottomSpace={size.xxl}>
-        <IntroductionScreenSvg />
+        <GetStartedScreenSvg />
       </Section>
 
       <Section topSpace={size.xxl} bottomSpace={size.xl}>
@@ -20,7 +20,7 @@ export const IntroductionScreenView: FC<TIntroductionScreenViewProps> = ({
       </Section>
 
       <Section>
-        <Button text="Start" onPress={onPressIntroduction} />
+        <Button text="Get Started" onPress={onPressIntroduction} />
       </Section>
     </Screen>
   );

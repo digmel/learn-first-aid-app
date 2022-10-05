@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
-  IntroductionScreen,
+  GetStartedScreen,
   DashboardScreen,
   ExamScreen,
   ResultScreen,
@@ -26,7 +26,7 @@ export const Router = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="IntroductionScreen" component={IntroductionScreen} />
+      <Stack.Screen name="IntroductionScreen" component={GetStartedScreen} />
       <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
       <Stack.Screen name="ExamScreen" component={ExamScreen} />
       <Stack.Screen name="ResultScreen" component={ResultScreen} />
