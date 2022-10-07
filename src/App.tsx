@@ -5,7 +5,7 @@ import { StoreProvider } from "@store";
 import { Text, View } from "react-native";
 import { supabase } from "@configs";
 import Menu from "./Menu.svg";
-import { Svg } from "@components";
+import { Svg, Icon } from "@components";
 
 const App = () => {
   const [cards, setCards] = useState([]);
@@ -65,6 +65,7 @@ const App = () => {
           </View>
 
           <Menu width={40} height={40} />
+          <Icon name="BulletSolid" />
           <Text>{cards && JSON.stringify(cards[0])}</Text>
         </View>
       </NavigationContainer>
