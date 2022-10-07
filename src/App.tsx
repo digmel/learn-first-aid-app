@@ -5,7 +5,7 @@ import { StoreProvider } from "@store";
 import { Text, View } from "react-native";
 import { supabase } from "@configs";
 import Menu from "./Menu.svg";
-import { SvgUri } from "react-native-svg";
+import { Svg } from "@components";
 
 const App = () => {
   const [cards, setCards] = useState([]);
@@ -44,8 +44,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchData();
-    fetchSVG();
+    fetchData().then(() => {
+      fetchSVG();
+    });
   }, []);
 
   console.log("hehee", svgURL, fetchedError);
@@ -58,8 +59,9 @@ const App = () => {
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
           <Text>Database test</Text>
-          <View>
-            <SvgUri width="100" height="100" uri={svgURL} />
+
+          <View style={{ width: 400, height: 400, backgroundColor: "green" }}>
+            <Svg uri={svgURL} />
           </View>
 
           <Menu width={40} height={40} />
