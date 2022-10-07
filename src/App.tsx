@@ -1,14 +1,70 @@
-import React from "react";
-import "react-native-gesture-handler";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { Router } from "@router";
 import { StoreProvider } from "@store";
+import { Text, View } from "react-native";
+import { supabase } from "@configs";
+import Menu from "./Menu.svg";
+import { SvgUri } from "react-native-svg";
 
 const App = () => {
+  const [cards, setCards] = useState([]);
+  const [fetchedError, setFetchedError] = useState(null);
+  const [svgURL, setSvgURL] = useState<any>();
+
+  const fetchData = async () => {
+    try {
+      const { data: cards, error } = await supabase.from("cards").select("SVG");
+
+      if (cards) {
+        setCards(cards);
+        console.log("success fetching");
+      } else {
+        console.log("error is happening");
+      }
+    } catch (error) {
+      console.log("first", error);
+    }
+  };
+
+  const fetchSVG = async () => {
+    try {
+      const { data, error } = await supabase.storage
+        .from("illustrations")
+        .getPublicUrl(`intro/${cards[0].SVG}.svg`);
+
+      setFetchedError(error);
+      if (data) {
+        setSvgURL(data.publicURL);
+        console.log("success fetching svg");
+      }
+    } catch (error) {
+      console.log("error on svgs", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+    fetchSVG();
+  }, []);
+
+  console.log("hehee", svgURL, fetchedError);
+
   return (
     <StoreProvider>
       <NavigationContainer>
-        <Router />
+        {/* <Router /> */}
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Text>Database test</Text>
+          <View>
+            <SvgUri width="100" height="100" uri={svgURL} />
+          </View>
+
+          <Menu width={40} height={40} />
+          <Text>{cards && JSON.stringify(cards[0])}</Text>
+        </View>
       </NavigationContainer>
     </StoreProvider>
   );
