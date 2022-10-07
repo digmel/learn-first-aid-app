@@ -14,6 +14,7 @@
     "paths": {
       "@assets": ["assets"],
       "@components": ["components"],
+      "@configs": ["configs"],
       "@router": ["router"],
       "@store": ["store"],
       "@screens": ["screens"],
