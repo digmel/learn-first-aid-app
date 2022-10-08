@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { styles } from "./GetStartedScreen.style";
 import { TGetStartedViewProps } from "./GetStartedScreen.type";
 import { Screen, Button, Section, Text, size } from "@components";
-// import { GetStartedScreenSvg } from "@svg";
+import GetStartedSVG from "@assets/illustrations/GetStarted.svg";
 
 export const GetStartedScreenView: FC<TGetStartedViewProps> = ({
   openHome,
@@ -10,7 +10,7 @@ export const GetStartedScreenView: FC<TGetStartedViewProps> = ({
   return (
     <Screen isScrollViewDisabled>
       <Section containerStyle={styles.svgContainer} bottomSpace={size.xxl}>
-        {/* <GetStartedScreenSvg /> */}
+        <GetStartedSVG />
       </Section>
 
       <Section topSpace={size.xxl} bottomSpace={size.xl}>
