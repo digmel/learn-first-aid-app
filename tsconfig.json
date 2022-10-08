@@ -19,7 +19,7 @@
       "@store": ["store"],
       "@screens": ["screens"],
       "@storage": ["storage"],
-      "@utilities": ["utilities"],
+      "@utils": ["utils"],
       "@data": ["data"],
       "@svg": ["svg"],
       "test": ["test"]

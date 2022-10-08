@@ -16,13 +16,13 @@ module.exports = function (api) {
             "@store": "./src/store",
             "@screens": "./src/screens",
             "@storage": "./src/storage",
-            "@utilities": "./src/utilities",
+            "@utils": "./src/utils",
             "@data": "./src/data",
             "@svg": "./src/svg",
           },
         },
       ],
-      "react-native-reanimated/plugin", //Added for React Native Animation V2
+      "react-native-reanimated/plugin",
     ],
   };
 };

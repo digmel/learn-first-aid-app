@@ -15,8 +15,9 @@ import {
 import Logo from "@assets/Logo.svg";
 
 export const HomeScreenView: FC<THomeScreenViewProps> = ({
-  openCardDetails,
   openExam,
+  injuriesData,
+  disastersData,
 }) => {
   return (
     <LinearGradient colors={[color.gradientStart, color.gradientEnd]}>
@@ -37,31 +38,19 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
 
         <Section topSpace={size.l}>
           <CardSlider title="Learn " subTitle="Injuries">
-            <Card
-              onPress={openCardDetails}
-              title="Anaphylaxis"
-              // svg={<AnaphylaxisSvg />}
-            />
-            <Card
-              onPress={openCardDetails}
-              title="Asthma Attacks"
-              // svg={<AsthmaSvg />}
-            />
-            <Card
-              onPress={openCardDetails}
-              title="Heart Attack"
-              // svg={<HeartAttackSvg />}
-            />
-            <Card
-              onPress={openCardDetails}
-              title="Diabetes"
-              // svg={<DiabetesSvg />}
-            />
-            <Card
-              onPress={openCardDetails}
-              title="Fractures"
-              // svg={<FracturesSvg />}
-            />
+            {injuriesData &&
+              injuriesData.map((card) => (
+                <Card key={card.id} title={card.title} svg={card.SVG} />
+              ))}
+          </CardSlider>
+        </Section>
+
+        <Section topSpace={size.l}>
+          <CardSlider title="Learn " subTitle="Natural Disasters">
+            {disastersData &&
+              disastersData.map((card) => (
+                <Card key={card.id} title={card.title} svg={card.SVG} />
+              ))}
           </CardSlider>
         </Section>
       </Screen>

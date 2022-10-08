@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
-import {size, color} from '@components';
+import { StyleSheet } from "react-native";
+import { size, color } from "@components";
 
 export const styles = StyleSheet.create({
   container: {
-    height: 184,
-    width: 153,
+    height: 180,
+    width: 150,
     borderColor: color.dark,
     borderWidth: 1,
     borderRadius: size.l,
@@ -13,14 +13,14 @@ export const styles = StyleSheet.create({
   },
 
   svgContainer: {
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    flexBasis: '65%',
+    flexBasis: "65%",
+    paddingHorizontal: 12,
+    paddingTop: 32,
   },
 
   titleContainer: {
-    flexBasis: '35%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexBasis: "35%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

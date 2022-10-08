@@ -1,16 +1,27 @@
-import React, {FC} from 'react';
-import {View} from 'react-native';
-import {TCardProps} from './Card.type';
-import {styles} from './Card.style';
-import {Text} from '@components';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import React, { FC, useEffect, useState } from "react";
+import { View } from "react-native";
+import { TCardProps } from "./Card.type";
+import { styles } from "./Card.style";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { getSvgURL } from "@utils";
 
-export const Card: FC<TCardProps> = ({onPress, title, svg}) => {
+import { Svg, Text } from "@components";
+
+export const Card: FC<TCardProps> = ({ onPress, title, svg }) => {
+  const [svgURL, setSvgURL] = useState<any>();
+
+  useEffect(() => {
+    getSvgURL("cards", `${svg}`).then((res) => setSvgURL(res));
+  }, []);
+
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => onPress && onPress()}>
-      <View style={styles.svgContainer}>{svg}</View>
+      onPress={() => onPress && onPress()}
+    >
+      <View style={styles.svgContainer}>
+        <Svg uri={svgURL} />
+      </View>
 
       <View style={styles.titleContainer}>
         <Text variation="title">{title}</Text>
