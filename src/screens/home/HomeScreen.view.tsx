@@ -12,6 +12,7 @@ import {
   Button,
   color,
 } from "@components";
+import Logo from "@assets/Logo.svg";
 
 export const HomeScreenView: FC<THomeScreenViewProps> = ({
   openCardDetails,
@@ -21,7 +22,7 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
     <LinearGradient colors={[color.gradientStart, color.gradientEnd]}>
       <Screen style={styles.container}>
         <Section topSpace={size.l} containerStyle={styles.logoContainer}>
-          {/* <Logo /> */}
+          <Logo />
         </Section>
 
         <Section>

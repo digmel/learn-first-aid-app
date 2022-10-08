@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { styles } from "./GetStartedScreen.style";
 import { TGetStartedViewProps } from "./GetStartedScreen.type";
 import { Screen, Button, Section, Text, size } from "@components";
-import GetStartedSVG from "@assets/illustrations/GetStarted.svg";
+import GetStartedSVG from "@assets/GetStarted.svg";
 
 export const GetStartedScreenView: FC<TGetStartedViewProps> = ({
   openHome,
