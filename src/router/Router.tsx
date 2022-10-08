@@ -6,7 +6,7 @@ import {
   ExamScreen,
   ResultScreen,
   CardDetailsScreen,
-} from "../screens";
+} from "@screens";
 
 const Stack = createNativeStackNavigator();
 

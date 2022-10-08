@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { ExamScreen } from "@screens";
 import { HomeScreenView } from "./HomeScreen.view";
 import { THomeScreenProps } from "./HomeScreen.type";
 import { supabase } from "@configs";
@@ -35,12 +34,17 @@ export const HomeScreen: FC<THomeScreenProps> = ({ navigation }) => {
   }, []);
 
   const openExam = () => {
-    navigation.navigate(ExamScreen);
+    navigation.navigate("ExamScreen");
+  };
+
+  const openCardDetails = (cardID: number) => {
+    navigation.navigate("CardDetailsScreen", { cardID });
   };
 
   return (
     <HomeScreenView
       openExam={openExam}
+      openCardDetails={openCardDetails}
       injuriesData={injuriesData}
       disastersData={disastersData}
     />

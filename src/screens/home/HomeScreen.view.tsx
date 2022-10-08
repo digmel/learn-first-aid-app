@@ -16,6 +16,7 @@ import Logo from "@assets/Logo.svg";
 
 export const HomeScreenView: FC<THomeScreenViewProps> = ({
   openExam,
+  openCardDetails,
   injuriesData,
   disastersData,
 }) => {
@@ -40,7 +41,14 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
           <CardSlider title="Learn " subTitle="Injuries">
             {injuriesData &&
               injuriesData.map((card) => (
-                <Card key={card.id} title={card.title} svg={card.SVG} />
+                <Card
+                  key={card.id}
+                  title={card.title}
+                  svg={card.SVG}
+                  onPress={() => {
+                    openCardDetails(card.id);
+                  }}
+                />
               ))}
           </CardSlider>
         </Section>
@@ -49,7 +57,14 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
           <CardSlider title="Learn " subTitle="Natural Disasters">
             {disastersData &&
               disastersData.map((card) => (
-                <Card key={card.id} title={card.title} svg={card.SVG} />
+                <Card
+                  key={card.id}
+                  title={card.title}
+                  svg={card.SVG}
+                  onPress={() => {
+                    openCardDetails(card.id);
+                  }}
+                />
               ))}
           </CardSlider>
         </Section>

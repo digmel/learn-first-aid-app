@@ -4,7 +4,7 @@ export type TIconProps = {
   height?: string | number;
 };
 
-type TIconName =
+export type TIconName =
   | "BulletSolid"
   | "CheckedBoxOutline"
   | "CheckedBoxSolid"

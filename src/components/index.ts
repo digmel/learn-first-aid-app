@@ -1,5 +1,6 @@
 export * from "./svg/Svg";
 export * from "./icon/Icon";
+export * from "./icon/Icon.type";
 
 // TODO: needs refactoring:
 export * from "./config/color";

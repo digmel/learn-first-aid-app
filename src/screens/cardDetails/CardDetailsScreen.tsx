@@ -1,78 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styles } from "./CardDetailsScreen.style";
-import { Screen, Header, Text, Section, List, size } from "@components";
-import { View } from "react-native";
-// import { AnaphylaxisSvg01, AnaphylaxisSvg02, AnaphylaxisSvg03 } from "@svg";
+import { Screen, Text, Section, List } from "@components";
+import { supabase } from "@configs";
 
-export const CardDetailsScreen = () => {
-  return (
-    <Screen
-      isHeaderSticky
-      style={styles.container}
-      header={
-        <Header hasBack>
-          <Text variation="subtitle">Anaphylaxis</Text>
-        </Header>
+export const CardDetailsScreen = ({ route }) => {
+  const [content, setContent] = useState<Record<string, Array<string>>>();
+  const [fetchedError, setFetchedError] = useState(null);
+  const { cardID } = route.params;
+
+  const fetchScreenData = async () => {
+    try {
+      const { data: screens, error } = await supabase.from("screens").select();
+      const content = screens.find((screen) => screen.id === cardID);
+      setContent(content);
+
+      if (error) {
+        setFetchedError(error);
+        throw new Error("Error from supabase", fetchedError);
       }
-    >
-      <Section title="What is" subtitle="Anaphylaxis?">
-        <Text>
-          Anaphylaxis, also called anaphylactic shock, is a severe allergic
-          reaction that makes it difficult for a person to breathe. Someone at
-          risk of anaphylactic shock should always have an auto-injector. It
-          contains medication that helps to ease the symptoms in an emergency.
-        </Text>
-      </Section>
+    } catch ({ message }) {
+      throw new Error("Fetch data error at HomeScreen", message);
+    }
+  };
 
-      <Section isCentered>{/* <AnaphylaxisSvg01 /> */}</Section>
+  useEffect(() => {
+    fetchScreenData();
+  }, []);
 
-      <Section title="Symptoms" subtitle="of Anaphylaxis">
-        <List>Difficult or noisy breathing</List>
-        <List>Swelling or tightness of the throat</List>
-        <List>Wheeze or persistent cough</List>
-        <List>Persistent dizziness or collapse</List>
-        <List>Paleness and floppiness in children</List>
-        <List>Abdominal pain and vomiting</List>
-      </Section>
+  return (
+    <Screen isHeaderSticky style={styles.container}>
+      {content && (
+        <Section title="What is" subtitle={`${content.name}?`}>
+          <Text>{content.description}</Text>
+        </Section>
+      )}
 
-      <Section title="How to" subtitle="Recognize">
-        <List>A weak and rapid pulse</List>
-        <List>Nausea, vomiting, or diarrhea</List>
-        <List>Dizziness or fainting</List>
-        <List>Low blood pressure (hypotension)</List>
-        <List>Swelling of your lips, face, and eyes</List>
-        <List>Hives or welts. Tingling mouth</List>
-      </Section>
+      {content?.symptoms && (
+        <Section title="Symptoms">
+          {content.symptoms.map((list, index) => (
+            <List key={index}>{list}</List>
+          ))}
+        </Section>
+      )}
 
-      <Section isCentered title="WHat to do" subtitle="to help">
-        {/* <AnaphylaxisSvg02 /> */}
-      </Section>
+      {content?.emergency && (
+        <Section title="Signs of" subtitle="EMERGENCY">
+          {content.emergency.map((list, index) => (
+            <List key={index}>{list}</List>
+          ))}
+        </Section>
+      )}
 
-      <Section>
-        <Text>
-          When person is having a severe allergic reaction help them use an
-          auto-injector if they have some. Lay the person flat, don’t stand, and
-          call an ambulance. Make them as comfortable as possible while you wait
-          for the ambulance.
-        </Text>
-      </Section>
+      {content?.recognition && (
+        <Section title="How to" subtitle="Recognize">
+          {content.recognition.map((list, index) => (
+            <List key={index}>{list}</List>
+          ))}
+        </Section>
+      )}
 
-      <Section isCentered topSpace={size.xl}>
-        {/* <AnaphylaxisSvg03 /> */}
-      </Section>
-
-      <Section>
-        <Text>
-          If you are at risk of a severe allergic reaction, make sure you always
-          have a: Mobile phone, Action plan, EpiPen®
-        </Text>
-        <Text>
-          Wear medical identification jewelry this increases the likelihood that
-          adrenaline will be administered in an emergency
-        </Text>
-      </Section>
-
-      <View style={{ height: 200 }}></View>
+      {content?.guidance && (
+        <Section isCentered title="WHat to do" subtitle="to help">
+          <Text>{content.guidance}</Text>
+        </Section>
+      )}
     </Screen>
   );
 };

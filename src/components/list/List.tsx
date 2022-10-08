@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { styles } from "./List.style";
 import { TListProps } from "./List.type";
-import { color, size, Icon, Text } from "../../components";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { size, Icon, TIconName, Text } from "@components";
+import { TouchableOpacity, View } from "react-native";
 
 export const List: FC<TListProps> = ({
   children,
@@ -10,30 +10,29 @@ export const List: FC<TListProps> = ({
   onPress,
   isDisabled = !onPress,
 }) => {
-  let iconName: String;
+  let iconName: TIconName;
   let dynamicColor;
   let dynamicSize;
 
   switch (variation) {
-    case "Empty":
-      iconName = "check-clear";
-      dynamicColor = color.primary;
-      dynamicSize = size.m;
-      break;
-    case "Correct":
-      iconName = "check-correct";
-      dynamicColor = color.success;
-      dynamicSize = size.m;
-      break;
-    case "Wrong":
-      iconName = "check-wrong";
-      dynamicColor = color.error;
-      dynamicSize = size.m;
-      break;
+    // case "Empty":
+    //   iconName = "check-clear";
+    //   dynamicColor = color.primary;
+    //   dynamicSize = size.m;
+    //   break;
+    // case "Correct":
+    //   iconName = "check-correct";
+    //   dynamicColor = color.success;
+    //   dynamicSize = size.m;
+    //   break;
+    // case "Wrong":
+    //   iconName = "check-wrong";
+    //   dynamicColor = color.error;
+    //   dynamicSize = size.m;
+    //   break;
 
     default:
-      iconName = "bullet";
-      dynamicColor = color.primary;
+      iconName = "BulletSolid";
       dynamicSize = size.xs;
       break;
   }
@@ -43,12 +42,9 @@ export const List: FC<TListProps> = ({
       onPress={() => onPress && onPress()}
       style={[styles.container]}
     >
-      <Icon
-        name={iconName}
-        size={dynamicSize}
-        color={dynamicColor}
-        iconContainerStyle={{ paddingRight: size.xs }}
-      />
+      <View style={styles.icon}>
+        <Icon name={iconName} width={dynamicSize} height={dynamicSize} />
+      </View>
       <Text color={dynamicColor}>{children}</Text>
     </TouchableOpacity>
   );
