@@ -8,10 +8,10 @@ import { getSvgURL } from "@utils";
 import { Svg, Text } from "@components";
 
 export const Card: FC<TCardProps> = ({ onPress, title, svg }) => {
-  const [svgURL, setSvgURL] = useState<any>();
+  const [svgURL, setSvgURL] = useState<string>();
 
   useEffect(() => {
-    getSvgURL("cards", `${svg}`).then((res) => setSvgURL(res));
+    getSvgURL("cards", svg).then((res) => setSvgURL(res));
   }, []);
 
   return (
