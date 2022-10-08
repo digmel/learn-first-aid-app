@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import { TGetStartedScreenProps } from "./GetStartedScreen.type";
 import { GetStartedScreenView } from "./GetStartedScreen.view";
-import { DashboardScreen } from "@screens";
+import { HomeScreen } from "@screens";
 
 export const GetStartedScreen: FC<TGetStartedScreenProps> = ({
   navigation,
 }) => {
-  const _onPressIntroduction = () => {
-    navigation.navigate(DashboardScreen);
+  const openHome = () => {
+    navigation.navigate(HomeScreen);
   };
-  return <GetStartedScreenView onPressIntroduction={_onPressIntroduction} />;
+  return <GetStartedScreenView openHome={openHome} />;
 };

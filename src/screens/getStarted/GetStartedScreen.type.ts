@@ -3,5 +3,5 @@ export type TGetStartedScreenProps = {
 };
 
 export type TGetStartedViewProps = {
-  onPressIntroduction: Function;
+  openHome: Function;
 };

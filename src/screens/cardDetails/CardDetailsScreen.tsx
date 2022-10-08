@@ -1,10 +1,10 @@
-import React from 'react';
-import {styles} from './Topic01Screen.style';
-import {Screen, Header, Text, Section, List, size} from '@components';
-import {View} from 'react-native';
-import {AnaphylaxisSvg01, AnaphylaxisSvg02, AnaphylaxisSvg03} from '@svg';
+import React from "react";
+import { styles } from "./CardDetailsScreen.style";
+import { Screen, Header, Text, Section, List, size } from "@components";
+import { View } from "react-native";
+// import { AnaphylaxisSvg01, AnaphylaxisSvg02, AnaphylaxisSvg03 } from "@svg";
 
-export const Topic01Screen = () => {
+export const CardDetailsScreen = () => {
   return (
     <Screen
       isHeaderSticky
@@ -13,7 +13,8 @@ export const Topic01Screen = () => {
         <Header hasBack>
           <Text variation="subtitle">Anaphylaxis</Text>
         </Header>
-      }>
+      }
+    >
       <Section title="What is" subtitle="Anaphylaxis?">
         <Text>
           Anaphylaxis, also called anaphylactic shock, is a severe allergic
@@ -23,9 +24,7 @@ export const Topic01Screen = () => {
         </Text>
       </Section>
 
-      <Section isCentered>
-        <AnaphylaxisSvg01 />
-      </Section>
+      <Section isCentered>{/* <AnaphylaxisSvg01 /> */}</Section>
 
       <Section title="Symptoms" subtitle="of Anaphylaxis">
         <List>Difficult or noisy breathing</List>
@@ -46,7 +45,7 @@ export const Topic01Screen = () => {
       </Section>
 
       <Section isCentered title="WHat to do" subtitle="to help">
-        <AnaphylaxisSvg02 />
+        {/* <AnaphylaxisSvg02 /> */}
       </Section>
 
       <Section>
@@ -59,7 +58,7 @@ export const Topic01Screen = () => {
       </Section>
 
       <Section isCentered topSpace={size.xl}>
-        <AnaphylaxisSvg03 />
+        {/* <AnaphylaxisSvg03 /> */}
       </Section>
 
       <Section>
@@ -73,7 +72,7 @@ export const Topic01Screen = () => {
         </Text>
       </Section>
 
-      <View style={{height: 200}}></View>
+      <View style={{ height: 200 }}></View>
     </Screen>
   );
 };

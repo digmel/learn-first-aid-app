@@ -6,7 +6,6 @@ import CheckedBoxOutline from "@assets/icons/CheckedBoxOutline.svg";
 import CheckedBoxSolid from "@assets/icons/CheckedBoxSolid.svg";
 import CheckedOutline from "@assets/icons/CheckedOutline.svg";
 import CheckmarkOutlineClear from "@assets/icons/CheckmarkOutlineClear.svg";
-import CheckmarkOutlineChecked from "@assets/icons/CheckmarkOutlineChecked.svg";
 import CheckmarkSolidChecked from "@assets/icons/CheckmarkSolidChecked.svg";
 import ChevronOutline from "@assets/icons/ChevronOutline.svg";
 import CommentOutline from "@assets/icons/CommentOutline.svg";
@@ -47,9 +46,6 @@ export const Icon: FC<TIconProps> = ({ name, width = 40, height = 40 }) => {
       break;
     case "CheckmarkOutlineClear":
       DynamicIcon = CheckmarkOutlineClear;
-      break;
-    case "CheckmarkOutlineChecked":
-      DynamicIcon = CheckmarkOutlineChecked;
       break;
     case "CheckmarkSolidChecked":
       DynamicIcon = CheckmarkSolidChecked;

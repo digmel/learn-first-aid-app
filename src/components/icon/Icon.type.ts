@@ -10,7 +10,6 @@ type TIconName =
   | "CheckedBoxSolid"
   | "CheckedOutline"
   | "CheckmarkOutlineClear"
-  | "CheckmarkOutlineChecked"
   | "CheckmarkSolidChecked"
   | "ChevronOutline"
   | "CommentOutline"
