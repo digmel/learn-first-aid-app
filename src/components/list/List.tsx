@@ -15,21 +15,15 @@ export const List: FC<TListProps> = ({
   let dynamicSize;
 
   switch (variation) {
-    // case "Empty":
-    //   iconName = "check-clear";
-    //   dynamicColor = color.primary;
-    //   dynamicSize = size.m;
-    //   break;
-    // case "Correct":
-    //   iconName = "check-correct";
-    //   dynamicColor = color.success;
-    //   dynamicSize = size.m;
-    //   break;
-    // case "Wrong":
-    //   iconName = "check-wrong";
-    //   dynamicColor = color.error;
-    //   dynamicSize = size.m;
-    //   break;
+    case "Empty":
+      iconName = "CheckmarkOutlineClear";
+      break;
+    case "Correct":
+      iconName = "CheckedBoxSolid";
+      break;
+    case "Wrong":
+      iconName = "CheckedBoxOutline";
+      break;
 
     default:
       iconName = "BulletSolid";
