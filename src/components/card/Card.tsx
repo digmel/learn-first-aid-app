@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
+import { getSvgURL } from "@utils";
 import { View } from "react-native";
 import { TCardProps } from "./Card.type";
 import { styles } from "./Card.style";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { getSvgURL } from "@utils";
 
 import { Svg, Text } from "@components";
 

@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {View, ViewStyle} from 'react-native';
-import {styles} from './Section.style';
-import {TSectionProps} from './Section.type';
-import {size, Text} from '@components';
+import React, { FC } from "react";
+import { View, ViewStyle } from "react-native";
+import { styles } from "./Section.style";
+import { TSectionProps } from "./Section.type";
+import { size, Text } from "@components";
 
 export const Section: FC<TSectionProps> = ({
   title,
@@ -15,21 +15,21 @@ export const Section: FC<TSectionProps> = ({
   containerStyle,
   contentStyle,
 }) => {
-  const fullWidthStyle = isFullWidth && {marginHorizontal: -size.xl};
+  const fullWidthStyle = isFullWidth && { marginHorizontal: -size.xl };
 
-  const topSpaceStyle = !!topSpace && {marginTop: topSpace};
+  const topSpaceStyle = !!topSpace && { marginTop: topSpace };
 
   const bottomSpaceStyle = !!bottomSpace
-    ? {marginBottom: bottomSpace}
-    : {marginBottom: size.m};
+    ? { marginBottom: bottomSpace }
+    : { marginBottom: size.m };
 
   const variationStyle: ViewStyle = {};
 
   const contentDynamicStyle: ViewStyle = {};
 
   if (isCentered) {
-    contentDynamicStyle.alignItems = 'center';
-    contentDynamicStyle.justifyContent = 'center';
+    contentDynamicStyle.alignItems = "center";
+    contentDynamicStyle.justifyContent = "center";
   }
 
   const containerDynamicStyle = {
@@ -47,6 +47,7 @@ export const Section: FC<TSectionProps> = ({
           {subtitle && <Text variation="H1_light">{subtitle}</Text>}
         </View>
       )}
+
       <View style={[styles.content, contentDynamicStyle, contentStyle]}>
         {children}
       </View>

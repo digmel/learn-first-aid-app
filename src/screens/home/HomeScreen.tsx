@@ -1,44 +1,39 @@
 import React, { FC, useEffect, useState } from "react";
 import { HomeScreenView } from "./HomeScreen.view";
 import { THomeScreenProps } from "./HomeScreen.type";
-import { supabase } from "@configs";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const HomeScreen: FC<THomeScreenProps> = ({ navigation }) => {
-  const [fetchedError, setFetchedError] = useState(null);
   const [injuriesData, setInjuriesData] = useState([]);
   const [disastersData, setDisastersData] = useState([]);
 
-  const fetchCardData = async () => {
+  const getCardScreensData = async () => {
     try {
-      const { data: cards, error } = await supabase.from("cards").select();
+      const screensJSON = await AsyncStorage.getItem("@screens_content");
+      const screens = JSON.parse(screensJSON);
 
-      const injuries = cards.filter((card) => card.section === "injuries");
-      const disasters = cards.filter(
-        (card) => card.section === "natural-disaster"
+      const injuries = screens.filter((screen) => screen.topic === "injuries");
+      const disasters = screens.filter(
+        (screen) => screen.topic === "natural_disaster"
       );
 
       setDisastersData(disasters);
       setInjuriesData(injuries);
-
-      if (error) {
-        setFetchedError(error);
-        throw new Error("Error from supabase", fetchedError);
-      }
     } catch ({ message }) {
-      throw new Error("Fetch data error at HomeScreen", message);
+      throw new Error("getCardScreensData error at HomeScreen", message);
     }
   };
 
   useEffect(() => {
-    fetchCardData();
+    getCardScreensData();
   }, []);
 
   const openExam = () => {
     navigation.navigate("ExamScreen");
   };
 
-  const openCardDetails = (cardID: number) => {
-    navigation.navigate("CardDetailsScreen", { cardID });
+  const openCardDetails = (navigation_name: string) => {
+    navigation.navigate("CardDetailsScreen", { navigation_name });
   };
 
   return (

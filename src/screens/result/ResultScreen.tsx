@@ -1,4 +1,3 @@
-import { DashboardScreen, ExamScreen } from "@screens";
 import { useStore } from "@store";
 import React, { FC } from "react";
 import { TResultScreenProps } from "./ResultScreen.type";
@@ -9,12 +8,12 @@ export const ResultScreen: FC<TResultScreenProps> = ({ navigation }) => {
 
   const _onPressGoHome = () => {
     dispatch({ type: "clearResult" });
-    navigation.navigate(DashboardScreen);
+    navigation.navigate("HomeScreen");
   };
 
   const _onPressTryAgain = () => {
     dispatch({ type: "clearResult" });
-    navigation.navigate(ExamScreen);
+    navigation.navigate("ExamScreen");
   };
   return (
     <ResultScreenView

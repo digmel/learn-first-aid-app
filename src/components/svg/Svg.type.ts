@@ -1,3 +1,3 @@
 export type TSvgProps = {
-  uri: string;
+  uri: any;
 };

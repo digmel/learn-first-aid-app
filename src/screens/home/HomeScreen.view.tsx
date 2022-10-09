@@ -43,10 +43,10 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
               injuriesData.map((card) => (
                 <Card
                   key={card.id}
-                  title={card.title}
-                  svg={card.SVG}
+                  title={card.display_name}
+                  svg={card.navigation_name}
                   onPress={() => {
-                    openCardDetails(card.id);
+                    openCardDetails(card.navigation_name);
                   }}
                 />
               ))}
@@ -59,10 +59,10 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
               disastersData.map((card) => (
                 <Card
                   key={card.id}
-                  title={card.title}
-                  svg={card.SVG}
+                  title={card.display_name}
+                  svg={card.navigation_name}
                   onPress={() => {
-                    openCardDetails(card.id);
+                    openCardDetails(card.navigation_name);
                   }}
                 />
               ))}
