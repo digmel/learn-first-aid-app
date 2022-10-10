@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import { styles } from "./List.style";
 import { TListProps } from "./List.type";
-import { size, Icon, TIconName, Text } from "@components";
+import { Icon, TIconName, Text } from "@components";
 import { TouchableOpacity, View } from "react-native";
+import { size } from "@theme";
 
 export const List: FC<TListProps> = ({
   children,
@@ -16,13 +17,13 @@ export const List: FC<TListProps> = ({
 
   switch (variation) {
     case "Empty":
-      iconName = "CheckmarkOutlineClear";
+      iconName = "CheckmarkEmpty";
       break;
     case "Correct":
-      iconName = "CheckedBoxSolid";
+      iconName = "CheckmarkSuccess";
       break;
     case "Wrong":
-      iconName = "CheckedBoxOutline";
+      iconName = "CheckmarkWrong";
       break;
 
     default:

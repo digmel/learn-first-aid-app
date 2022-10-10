@@ -2,17 +2,9 @@ import React, { FC } from "react";
 import { THomeScreenViewProps } from "./HomeScreen.type";
 import LinearGradient from "react-native-linear-gradient";
 import { styles } from "./HomeScreen.style";
-import {
-  Section,
-  Screen,
-  Card,
-  CardSlider,
-  size,
-  Text,
-  Button,
-  color,
-} from "@components";
+import { Section, Screen, Card, CardSlider, Text, Button } from "@components";
 import Logo from "@assets/Logo.svg";
+import { size, color } from "@theme";
 
 export const HomeScreenView: FC<THomeScreenViewProps> = ({
   openExam,
@@ -23,7 +15,7 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
   return (
     <LinearGradient colors={[color.gradientStart, color.gradientEnd]}>
       <Screen style={styles.container}>
-        <Section topSpace={size.l} containerStyle={styles.logoContainer}>
+        <Section topSpace={size.xxl} containerStyle={styles.logoContainer}>
           <Logo />
         </Section>
 
@@ -34,7 +26,7 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
         </Section>
 
         <Section topSpace={size.l}>
-          <Button text="Start Test" variation="secondary" onPress={openExam} />
+          <Button text="Start Test" variation="primary" onPress={openExam} />
         </Section>
 
         <Section topSpace={size.l}>

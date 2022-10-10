@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
-import {ActivityIndicator, View} from 'react-native';
-import {color} from '@components';
+import React, { FC } from "react";
+import { ActivityIndicator, View } from "react-native";
+import { color } from "@theme";
 
-import type {TLoaderProps} from './Loader.type';
-import styles from './Loader.style';
+import type { TLoaderProps } from "./Loader.type";
+import styles from "./Loader.style";
 
 export const Loader: FC<TLoaderProps> = ({
   isLoading = false,

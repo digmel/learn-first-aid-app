@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { StyleProp, Text as NativeText, TextStyle } from "react-native";
 import { styles } from "./Text.style";
 import { TTextProps } from "./Text.type";
-import { color as configColor } from "../../components";
+import { color as configColor } from "@theme";
 import {
   useFonts,
   Poppins_200ExtraLight,

@@ -5,8 +5,10 @@ import BulletSolid from "@assets/icons/BulletSolid.svg";
 import CheckedBoxOutline from "@assets/icons/CheckedBoxOutline.svg";
 import CheckedBoxSolid from "@assets/icons/CheckedBoxSolid.svg";
 import CheckedOutline from "@assets/icons/CheckedOutline.svg";
-import CheckmarkOutlineClear from "@assets/icons/CheckmarkOutlineClear.svg";
-import CheckmarkSolidChecked from "@assets/icons/CheckmarkSolidChecked.svg";
+import CheckmarkChecked from "@assets/icons/CheckmarkChecked.svg";
+import CheckmarkEmpty from "@assets/icons/CheckmarkEmpty.svg";
+import CheckmarkWrong from "@assets/icons/CheckmarkWrong.svg";
+import CheckmarkSuccess from "@assets/icons/CheckmarkSuccess.svg";
 import ChevronOutline from "@assets/icons/ChevronOutline.svg";
 import CommentOutline from "@assets/icons/CommentOutline.svg";
 import CommentSolid from "@assets/icons/CommentSolid.svg";
@@ -44,11 +46,17 @@ export const Icon: FC<TIconProps> = ({ name, width = 40, height = 40 }) => {
     case "CheckedOutline":
       DynamicIcon = CheckedOutline;
       break;
-    case "CheckmarkOutlineClear":
-      DynamicIcon = CheckmarkOutlineClear;
+    case "CheckmarkEmpty":
+      DynamicIcon = CheckmarkEmpty;
       break;
-    case "CheckmarkSolidChecked":
-      DynamicIcon = CheckmarkSolidChecked;
+    case "CheckmarkChecked":
+      DynamicIcon = CheckmarkChecked;
+      break;
+    case "CheckmarkSuccess":
+      DynamicIcon = CheckmarkSuccess;
+      break;
+    case "CheckmarkWrong":
+      DynamicIcon = CheckmarkWrong;
       break;
     case "ChevronOutline":
       DynamicIcon = ChevronOutline;

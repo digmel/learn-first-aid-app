@@ -8,11 +8,10 @@ import {
   Header,
   List,
   Button,
-  color,
-  size,
   ProgressBar,
 } from "@components";
 import { View } from "react-native";
+import { size, color } from "@theme";
 
 export const ExamScreenView: FC<TExamScreenViewProps> = ({
   index,

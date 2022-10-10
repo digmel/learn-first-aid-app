@@ -2,8 +2,9 @@ import React, { FC } from "react";
 import { styles } from "./ResultScreen.style";
 import { TResultScreenViewProps } from "./ResultScreen.type";
 import CircularProgress from "react-native-circular-progress-indicator";
-import { Screen, Button, Section, Text, size, color } from "@components";
+import { Screen, Button, Section, Text } from "@components";
 import { View } from "react-native";
+import { size, color } from "@theme";
 
 const maxValue = 3;
 

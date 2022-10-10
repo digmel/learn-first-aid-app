@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import { styles } from "./GetStartedScreen.style";
 import { TGetStartedViewProps } from "./GetStartedScreen.type";
-import { Screen, Button, Section, Text, size } from "@components";
+import { Screen, Button, Section, Text } from "@components";
 import GetStartedSVG from "@assets/GetStarted.svg";
+import { size } from "@theme";
 
 export const GetStartedScreenView: FC<TGetStartedViewProps> = ({
   openHome,

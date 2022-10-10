@@ -1,17 +1,18 @@
-import React, {FC} from 'react';
-import {TouchableOpacity, TextStyle, ViewStyle, View} from 'react-native';
-import {styles} from './Button.style';
-import type {TButtonProps} from './Button.type';
-import {color, Icon, Loader, Text, size as configSize} from '@components';
+import React, { FC } from "react";
+import { TouchableOpacity, TextStyle, ViewStyle, View } from "react-native";
+import { styles } from "./Button.style";
+import type { TButtonProps } from "./Button.type";
+import { Icon, Loader, Text } from "@components";
+import { size as configSize, color } from "@theme";
 
 export const Button: FC<TButtonProps> = ({
   text,
   onPress,
-  variation = 'primary',
+  variation = "primary",
   isDisabled = false,
   containerStyle,
   isFluid = false,
-  size = 'large',
+  size = "large",
   isLoading,
   textStyle,
   isUppercase = false,
@@ -35,12 +36,12 @@ export const Button: FC<TButtonProps> = ({
     borderWidth: 0,
     paddingHorizontal: configSize.xl,
     height: HEIGHT_LARGE,
-    textVariation: 'button',
+    textVariation: "button",
     iconColor: color.light,
   };
 
   switch (variation) {
-    case 'primary':
+    case "primary":
       dynamicProperties.backgroundColor = isDisabled
         ? color.disabled
         : color.primary;
@@ -48,8 +49,8 @@ export const Button: FC<TButtonProps> = ({
       dynamicProperties.textColor = color.light;
       dynamicProperties.iconColor = color.light;
       break;
-    case 'secondary':
-      dynamicProperties.backgroundColor = 'transparent';
+    case "secondary":
+      dynamicProperties.backgroundColor = "transparent";
       dynamicProperties.borderWidth = BORDER_OUTLINE_WIDTH;
       dynamicProperties.textColor = isDisabled ? color.disabled : color.primary;
       dynamicProperties.borderColor = isDisabled
@@ -57,25 +58,25 @@ export const Button: FC<TButtonProps> = ({
         : color.primary;
       dynamicProperties.iconColor = isDisabled ? color.disabled : color.primary;
       break;
-    case 'link':
+    case "link":
       dynamicProperties.backgroundColor = isDisabled
         ? color.gray200
-        : 'transparent';
+        : "transparent";
       dynamicProperties.textColor = color.primary;
       dynamicProperties.iconColor = color.primary;
       break;
-    case 'google':
+    case "google":
       dynamicProperties.backgroundColor = color.google;
       dynamicProperties.textColor = color.light;
       textContainerStyle = styles.textContainer;
       break;
-    case 'facebook':
+    case "facebook":
       dynamicProperties.backgroundColor = color.facebook;
       dynamicProperties.textColor = color.light;
       dynamicProperties.iconColor = color.light;
       textContainerStyle = styles.textContainer;
       break;
-    case 'email':
+    case "email":
       dynamicProperties.textColor = color.light;
       dynamicProperties.iconColor = color.light;
       textContainerStyle = styles.textContainer;
@@ -83,15 +84,15 @@ export const Button: FC<TButtonProps> = ({
   }
 
   switch (size) {
-    case 'large':
+    case "large":
       dynamicProperties.paddingHorizontal = configSize.xl;
       dynamicProperties.height = HEIGHT_LARGE;
       break;
-    case 'medium':
+    case "medium":
       dynamicProperties.paddingHorizontal = configSize.l;
       dynamicProperties.height = HEIGHT_MEDIUM;
       break;
-    case 'small':
+    case "small":
       dynamicProperties.paddingHorizontal = configSize.m;
       dynamicProperties.height = HEIGHT_SMALL;
       break;
@@ -106,12 +107,12 @@ export const Button: FC<TButtonProps> = ({
   };
 
   const wrapperStyle: ViewStyle = {
-    alignItems: isFluid ? 'center' : undefined,
+    alignItems: isFluid ? "center" : undefined,
   };
 
   const textDynamicStyle: TextStyle = {
     color: dynamicProperties.textColor,
-    textTransform: isUppercase ? 'uppercase' : 'none',
+    textTransform: isUppercase ? "uppercase" : "none",
   };
 
   const iconContainerDynamicStyle: TextStyle = {
@@ -125,7 +126,8 @@ export const Button: FC<TButtonProps> = ({
         disabled={isDisabled}
         style={[styles.container, containerDynamicStyle, containerStyle]}
         onPress={() => onPress && onPress()}
-        {...props}>
+        {...props}
+      >
         <Loader isLoading={isLoading} loaderColor={dynamicProperties.textColor}>
           <View style={styles.contentContainer}>
             {!!iconLeft && (
@@ -134,7 +136,8 @@ export const Button: FC<TButtonProps> = ({
                   styles.iconContainer,
                   iconContainerDynamicStyle,
                   iconContainerStyle,
-                ]}>
+                ]}
+              >
                 <Icon
                   name={iconLeft}
                   color={dynamicProperties.iconColor}
@@ -146,7 +149,8 @@ export const Button: FC<TButtonProps> = ({
             <View style={[textContainerStyle]}>
               <Text
                 variation="button"
-                textStyle={[textDynamicStyle, textStyle]}>
+                textStyle={[textDynamicStyle, textStyle]}
+              >
                 {text}
               </Text>
             </View>
@@ -156,7 +160,8 @@ export const Button: FC<TButtonProps> = ({
                   styles.iconContainer,
                   iconContainerDynamicStyle,
                   iconContainerStyle,
-                ]}>
+                ]}
+              >
                 <Icon
                   name={iconRight}
                   color={dynamicProperties.iconColor}

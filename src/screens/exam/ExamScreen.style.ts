@@ -1,19 +1,19 @@
-import {StyleSheet} from 'react-native';
-import {color, size} from '@components';
+import { StyleSheet } from "react-native";
+import { size, color } from "@theme";
 
 export const styles = StyleSheet.create({
   container: {},
 
   content: {
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
 
   testView: {
-    flexBasis: '35%',
+    flexBasis: "35%",
   },
 
   detailsSection: {
-    flexBasis: '35%',
+    flexBasis: "35%",
   },
 
   detailsView: {
@@ -34,13 +34,13 @@ export const styles = StyleSheet.create({
   },
 
   navigationContainer: {
-    flexBasis: '15%',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    flexBasis: "15%",
+    flexDirection: "row",
+    alignItems: "flex-start",
   },
 
   buttonContainer: {
-    flexBasis: '50%',
+    flexBasis: "50%",
     paddingHorizontal: size.s,
   },
 });

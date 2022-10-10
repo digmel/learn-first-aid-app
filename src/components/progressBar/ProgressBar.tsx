@@ -1,10 +1,10 @@
-import {Text} from '@components';
-import React, {FC} from 'react';
-import {View} from 'react-native';
-import {styles} from './ProgressBar.style';
-import type {TProgressBarProps} from './ProgressBar.type';
+import { Text } from "@components";
+import React, { FC } from "react";
+import { View } from "react-native";
+import { styles } from "./ProgressBar.style";
+import type { TProgressBarProps } from "./ProgressBar.type";
 
-export const ProgressBar: FC<TProgressBarProps> = ({progressIndex}) => {
+export const ProgressBar: FC<TProgressBarProps> = ({ progressIndex }) => {
   let fillerWidth: number = 10 + progressIndex * 10;
 
   const dynamicFillerStyle = {

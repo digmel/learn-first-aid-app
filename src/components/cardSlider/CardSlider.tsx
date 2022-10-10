@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {TCardSliderProps} from './CardSlider.type';
-import {styles} from './CardSlider.style';
-import {Text} from '@components';
-import {ScrollView, View} from 'react-native';
+import React, { FC } from "react";
+import { TCardSliderProps } from "./CardSlider.type";
+import { styles } from "./CardSlider.style";
+import { Text } from "@components";
+import { ScrollView, View } from "react-native";
 
 export const CardSlider: FC<TCardSliderProps> = ({
   title,
@@ -20,7 +20,8 @@ export const CardSlider: FC<TCardSliderProps> = ({
       <ScrollView
         horizontal
         indicatorStyle="white"
-        style={[styles.container, containerStyle]}>
+        style={[styles.container, containerStyle]}
+      >
         {children}
       </ScrollView>
     </View>

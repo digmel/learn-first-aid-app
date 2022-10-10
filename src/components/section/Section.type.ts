@@ -1,5 +1,5 @@
-import type {ReactNode} from 'react';
-import type {ViewStyle, StyleProp} from 'react-native';
+import type { ReactNode } from "react";
+import type { ViewStyle, StyleProp } from "react-native";
 
 export type TSectionProps = {
   title?: String;

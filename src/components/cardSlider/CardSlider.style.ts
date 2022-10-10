@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {size} from '@components';
+import { StyleSheet } from "react-native";
+import { size } from "@theme";
 
 export const styles = StyleSheet.create({
   wrapper: {
@@ -10,6 +10,6 @@ export const styles = StyleSheet.create({
 
   titleContainer: {
     marginBottom: size.m,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
 });

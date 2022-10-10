@@ -3,8 +3,9 @@ import { View, ViewStyle, StyleProp, TouchableOpacity } from "react-native";
 import { styles } from "./Header.style";
 import { THeaderProps } from "./Header.type";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { size, Icon, color } from "../../components";
+import { Icon } from "@components";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
+import { size, color } from "@theme";
 
 export const Header: FC<THeaderProps> = ({
   containerStyle,

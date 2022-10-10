@@ -1,8 +1,9 @@
-import React, {FC, useState} from 'react';
-import {TextInput as Input, View} from 'react-native';
-import {styles} from './TextInput.style';
-import {TTextInputProps} from './TextInput.type';
-import {color, Text} from '@components';
+import React, { FC, useState } from "react";
+import { TextInput as Input, View } from "react-native";
+import { styles } from "./TextInput.style";
+import { TTextInputProps } from "./TextInput.type";
+import { Text } from "@components";
+import { color } from "@theme";
 
 export const TextInput: FC<TTextInputProps> = ({
   label,
@@ -19,7 +20,7 @@ export const TextInput: FC<TTextInputProps> = ({
   const [placeholder, setPlaceholder] = useState(label);
 
   const dynamicProperties = {
-    backgroundColor: isActive || isFilled ? 'transparent' : color.gray100,
+    backgroundColor: isActive || isFilled ? "transparent" : color.gray100,
     borderColor: isActive ? color.gray400 : color.gray200,
   };
 
@@ -32,7 +33,7 @@ export const TextInput: FC<TTextInputProps> = ({
   };
 
   const _onFocus = () => {
-    setPlaceholder('');
+    setPlaceholder("");
     setActive(true);
   };
 
@@ -49,7 +50,8 @@ export const TextInput: FC<TTextInputProps> = ({
           <Text
             variation="input"
             color={color.gray500}
-            textStyle={styles.label}>
+            textStyle={styles.label}
+          >
             {label}
           </Text>
         </View>

@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
-import {View, ScrollView} from 'react-native';
-import {styles} from './Screen.style';
-import {size} from '@components';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {TScreenProps} from './Screen.type';
+import React, { FC } from "react";
+import { View, ScrollView } from "react-native";
+import { styles } from "./Screen.style";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { TScreenProps } from "./Screen.type";
+import { size } from "@theme";
 
 export const Screen: FC<TScreenProps> = ({
   containerStyle,
@@ -18,7 +18,7 @@ export const Screen: FC<TScreenProps> = ({
   isHeaderSticky = false,
   ...props
 }) => {
-  const {bottom: spaceBottom, top: spaceTop} = useSafeAreaInsets();
+  const { bottom: spaceBottom, top: spaceTop } = useSafeAreaInsets();
 
   const safeAreaStyle = !header &&
     !footer && {
@@ -33,8 +33,8 @@ export const Screen: FC<TScreenProps> = ({
   const Container = isScrollViewDisabled ? View : ScrollView;
 
   const containerDynamicStyle = isScrollViewDisabled
-    ? {style: [styles.container, containerStyle]}
-    : {contentContainerStyle: [styles.container, containerStyle]};
+    ? { style: [styles.container, containerStyle] }
+    : { contentContainerStyle: [styles.container, containerStyle] };
 
   return (
     <View style={styles.globalWrapper} {...props}>
@@ -45,7 +45,8 @@ export const Screen: FC<TScreenProps> = ({
             headerStyle,
             styles.stickyHeader,
             containerStyle,
-          ]}>
+          ]}
+        >
           {header}
         </View>
       )}

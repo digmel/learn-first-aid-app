@@ -1,5 +1,5 @@
-import {ViewStyle, StyleProp, TextStyle, TextInputProps} from 'react-native';
-import type {size} from '@components';
+import { ViewStyle, StyleProp, TextStyle, TextInputProps } from "react-native";
+import { size } from "@theme";
 
 export interface TTextInputProps extends TextInputProps {
   label: string;

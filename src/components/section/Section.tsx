@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import { View, ViewStyle } from "react-native";
 import { styles } from "./Section.style";
 import { TSectionProps } from "./Section.type";
-import { size, Text } from "@components";
+import { Text } from "@components";
+import { size } from "@theme";
 
 export const Section: FC<TSectionProps> = ({
   title,

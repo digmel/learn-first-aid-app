@@ -22,6 +22,7 @@
       "@utils": ["utils"],
       "@data": ["data"],
       "@svg": ["svg"],
+      "@theme": ["theme"],
       "test": ["test"]
     }
   },

@@ -1,15 +1,15 @@
-import {ViewStyle, TextStyle, StyleProp} from 'react-native';
-import type {size} from '@components';
+import { ViewStyle, TextStyle, StyleProp } from "react-native";
+import { size } from "@theme";
 
 export type TButtonVariation =
-  | 'primary'
-  | 'secondary'
-  | 'link'
-  | 'google'
-  | 'facebook'
-  | 'email';
+  | "primary"
+  | "secondary"
+  | "link"
+  | "google"
+  | "facebook"
+  | "email";
 
-export type TButtonSize = 'large' | 'medium' | 'small';
+export type TButtonSize = "large" | "medium" | "small";
 
 export type TButtonProps = {
   text: string;

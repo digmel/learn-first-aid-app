@@ -1,5 +1,5 @@
-import {size} from '@components';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
+import { size, color } from "@theme";
 
 export const styles = StyleSheet.create({
   container: {},
@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
   content: {},
 
   headline: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingBottom: size.m,
   },
 });

@@ -1,5 +1,5 @@
-import type {ReactNode} from 'react';
-import type {ScrollViewProps, ViewStyle, StyleProp} from 'react-native';
+import type { ReactNode } from "react";
+import type { ScrollViewProps, ViewStyle, StyleProp } from "react-native";
 
 export type TScreenProps = {
   containerStyle?: StyleProp<ViewStyle>;

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {size, color} from '@components';
+import { StyleSheet } from "react-native";
+import { size, color } from "@theme";
 
 const PADDING_HORIZONTAL = size.xl;
 

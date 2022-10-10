@@ -3,9 +3,6 @@ export * from "./icon/Icon";
 export * from "./icon/Icon.type";
 
 // TODO: needs refactoring:
-export * from "./config/color";
-export * from "./config/size";
-
 export * from "./screen/Screen";
 export * from "./screen/Screen.type";
 

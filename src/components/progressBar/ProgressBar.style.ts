@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {color, size} from '@components';
+import { StyleSheet } from "react-native";
+import { size, color } from "@theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,14 +8,14 @@ export const styles = StyleSheet.create({
     borderColor: color.primary,
     borderRadius: size.xxl,
     borderWidth: 1,
-    justifyContent: 'center',
-    alignContent: 'center',
+    justifyContent: "center",
+    alignContent: "center",
   },
 
   textContainer: {
     width: 130,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginVertical: size.xs,
   },
 
