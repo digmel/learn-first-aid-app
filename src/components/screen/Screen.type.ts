@@ -10,7 +10,8 @@ export type TScreenProps = {
   footer?: ReactNode;
   footerStyle?: StyleProp<ViewStyle>;
 
-  header?: ReactNode;
+  hasHeader?: boolean;
+  hasBack?: boolean;
   headerStyle?: StyleProp<ViewStyle>;
 
   isScrollViewDisabled?: boolean;

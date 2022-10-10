@@ -32,7 +32,7 @@ export const ArticlesScreen = ({ route }) => {
   }, []);
 
   return (
-    <Screen isHeaderSticky style={styles.container}>
+    <Screen isHeaderSticky hasHeader hasBack style={styles.container}>
       {content.map((section, index) => (
         <Section key={index} title={section.title} subtitle={section.subtitle}>
           {section.svg_path && (

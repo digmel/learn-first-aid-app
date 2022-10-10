@@ -4,6 +4,7 @@ import { styles } from "./Screen.style";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TScreenProps } from "./Screen.type";
 import { size } from "@theme";
+import { Header } from "../header/Header";
 
 export const Screen: FC<TScreenProps> = ({
   containerStyle,
@@ -11,7 +12,8 @@ export const Screen: FC<TScreenProps> = ({
   children,
   footer,
   footerStyle,
-  header,
+  hasHeader,
+  hasBack,
   headerStyle,
   isScrollViewDisabled = false,
   isFooterSticky = false,
@@ -20,7 +22,7 @@ export const Screen: FC<TScreenProps> = ({
 }) => {
   const { bottom: spaceBottom, top: spaceTop } = useSafeAreaInsets();
 
-  const safeAreaStyle = !header &&
+  const safeAreaStyle = !hasHeader &&
     !footer && {
       paddingTop: spaceTop === 0 ? size.xl : spaceTop,
       paddingBottom: spaceBottom === 0 ? size.xl : spaceBottom,
@@ -38,7 +40,7 @@ export const Screen: FC<TScreenProps> = ({
 
   return (
     <View style={styles.globalWrapper} {...props}>
-      {!!header && isHeaderSticky && (
+      {!!hasHeader && isHeaderSticky && (
         <View
           style={[
             styles.header,
@@ -47,12 +49,14 @@ export const Screen: FC<TScreenProps> = ({
             containerStyle,
           ]}
         >
-          {header}
+          <Header hasBack />
         </View>
       )}
       <Container {...containerDynamicStyle}>
-        {!!header && !isHeaderSticky && (
-          <View style={[styles.header, headerStyle]}>{header}</View>
+        {!!hasHeader && !isHeaderSticky && (
+          <View style={[styles.header, headerStyle]}>
+            <Header hasBack />
+          </View>
         )}
 
         <View style={[styles.content, contentDynamicStyle, contentStyle]}>

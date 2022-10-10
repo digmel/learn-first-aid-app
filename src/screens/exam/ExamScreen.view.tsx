@@ -1,15 +1,7 @@
 import React, { FC } from "react";
 import { TExamScreenViewProps } from "./ExamScreen.type";
 import { styles } from "./ExamScreen.style";
-import {
-  Section,
-  Screen,
-  Text,
-  Header,
-  List,
-  Button,
-  ProgressBar,
-} from "@components";
+import { Section, Screen, Text, List, Button, ProgressBar } from "@components";
 import { View } from "react-native";
 import { size, color } from "@theme";
 
@@ -33,7 +25,12 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
   isTestButtonDisabled,
 }) => {
   return (
-    <Screen isScrollViewDisabled contentStyle={styles.content}>
+    <Screen
+      isScrollViewDisabled
+      hasHeader
+      hasBack
+      contentStyle={styles.content}
+    >
       <View style={styles.testView}>
         <Section>
           <Text variation="body_bold">{examData.question}</Text>
