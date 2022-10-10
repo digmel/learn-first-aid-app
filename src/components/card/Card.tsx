@@ -3,8 +3,8 @@ import { View } from "react-native";
 import { TCardProps } from "./Card.type";
 import { styles } from "./Card.style";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
-import { Svg, Text } from "@components";
+import { Text } from "../text/Text";
+import { Svg } from "../svg/Svg";
 
 export const Card: FC<TCardProps> = ({ onPress, title, svgPath }) => {
   return (

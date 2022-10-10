@@ -7,7 +7,6 @@ import {
   TQuestions,
 } from "./ExamScreen.type";
 import { Questions } from "./questions";
-import { ResultScreen } from "@screens";
 import { useStore } from "@store";
 
 export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
@@ -146,7 +145,7 @@ export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
     }
 
     if (_index === 3) {
-      navigation.navigate(ResultScreen);
+      navigation.navigate("ResultScreen");
       CountCorrectAnswers();
       ClearAnswers();
       _setIndex(0);

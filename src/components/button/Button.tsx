@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import { TouchableOpacity, TextStyle, ViewStyle, View } from "react-native";
 import { styles } from "./Button.style";
 import type { TButtonProps } from "./Button.type";
-import { Icon, Loader, Text } from "@components";
 import { size as configSize, color } from "@theme";
+import { Text } from "../text/Text";
 
 export const Button: FC<TButtonProps> = ({
   text,
@@ -115,11 +115,6 @@ export const Button: FC<TButtonProps> = ({
     textTransform: isUppercase ? "uppercase" : "none",
   };
 
-  const iconContainerDynamicStyle: TextStyle = {
-    marginRight: iconLeft ? configSize.m : 0,
-    marginLeft: iconRight ? configSize.m : 0,
-  };
-
   return (
     <View style={wrapperStyle}>
       <TouchableOpacity
@@ -128,50 +123,13 @@ export const Button: FC<TButtonProps> = ({
         onPress={() => onPress && onPress()}
         {...props}
       >
-        <Loader isLoading={isLoading} loaderColor={dynamicProperties.textColor}>
-          <View style={styles.contentContainer}>
-            {!!iconLeft && (
-              <View
-                style={[
-                  styles.iconContainer,
-                  iconContainerDynamicStyle,
-                  iconContainerStyle,
-                ]}
-              >
-                <Icon
-                  name={iconLeft}
-                  color={dynamicProperties.iconColor}
-                  iconStyle={iconContainerDynamicStyle}
-                  size={configSize.l}
-                />
-              </View>
-            )}
-            <View style={[textContainerStyle]}>
-              <Text
-                variation="button"
-                textStyle={[textDynamicStyle, textStyle]}
-              >
-                {text}
-              </Text>
-            </View>
-            {!!iconRight && (
-              <View
-                style={[
-                  styles.iconContainer,
-                  iconContainerDynamicStyle,
-                  iconContainerStyle,
-                ]}
-              >
-                <Icon
-                  name={iconRight}
-                  color={dynamicProperties.iconColor}
-                  iconStyle={iconContainerDynamicStyle}
-                  size={configSize.l}
-                />
-              </View>
-            )}
+        <View style={styles.contentContainer}>
+          <View style={[textContainerStyle]}>
+            <Text variation="button" textStyle={[textDynamicStyle, textStyle]}>
+              {text}
+            </Text>
           </View>
-        </Loader>
+        </View>
       </TouchableOpacity>
     </View>
   );

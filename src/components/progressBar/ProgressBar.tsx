@@ -1,8 +1,8 @@
-import { Text } from "@components";
 import React, { FC } from "react";
 import { View } from "react-native";
 import { styles } from "./ProgressBar.style";
 import type { TProgressBarProps } from "./ProgressBar.type";
+import { Text } from "../text/Text";
 
 export const ProgressBar: FC<TProgressBarProps> = ({ progressIndex }) => {
   let fillerWidth: number = 10 + progressIndex * 10;

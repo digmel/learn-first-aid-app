@@ -3,9 +3,9 @@ import { View, ViewStyle, StyleProp, TouchableOpacity } from "react-native";
 import { styles } from "./Header.style";
 import { THeaderProps } from "./Header.type";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Icon } from "@components";
+import { Icon } from "../icon/Icon";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
-import { size, color } from "@theme";
+import { size } from "@theme";
 
 export const Header: FC<THeaderProps> = ({
   containerStyle,
@@ -41,7 +41,7 @@ export const Header: FC<THeaderProps> = ({
           style={[styles.containerLeft, containerLeftStyle]}
           onPress={onPressBack}
         >
-          <Icon name="back" color={color.primary} size={size.m} />
+          <Icon name="ChevronOutline" />
         </TouchableOpacity>
       )}
 
@@ -52,7 +52,7 @@ export const Header: FC<THeaderProps> = ({
           style={[styles.containerRight, containerRightStyle]}
           onPress={onPressMenu}
         >
-          <Icon name="menu" color={color.primary} size={size.m} />
+          <Icon name="MenuOutline" />
         </TouchableOpacity>
       )}
     </View>

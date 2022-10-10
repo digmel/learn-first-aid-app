@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 import { styles } from "./List.style";
 import { TListProps } from "./List.type";
-import { Icon, TIconName, Text } from "@components";
+import { Icon } from "../icon/Icon";
+import { TIconName } from "../icon/Icon.type";
+import { Text } from "../text/Text";
 import { TouchableOpacity, View } from "react-native";
 import { size } from "@theme";
 

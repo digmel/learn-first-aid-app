@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { TCardSliderProps } from "./CardSlider.type";
 import { styles } from "./CardSlider.style";
-import { Text } from "@components";
+import { Text } from "../text/Text";
 import { ScrollView, View } from "react-native";
 
 export const CardSlider: FC<TCardSliderProps> = ({

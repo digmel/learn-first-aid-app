@@ -1,11 +1,14 @@
 import React, { createContext, Dispatch, useContext, useReducer } from "react";
 import {
-  resultCounterInitialState,
-  resultCounterReducer,
   TMainState,
   TMainDispatch,
   TStoreProvider,
-} from "@store";
+} from "./StoreProvider.type";
+
+import {
+  resultCounterInitialState,
+  resultCounterReducer,
+} from "../resultCounter/ResultCounter";
 
 const StoreContext = createContext<any>([{}, () => {}]);
 

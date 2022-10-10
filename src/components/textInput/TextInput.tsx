@@ -2,8 +2,8 @@ import React, { FC, useState } from "react";
 import { TextInput as Input, View } from "react-native";
 import { styles } from "./TextInput.style";
 import { TTextInputProps } from "./TextInput.type";
-import { Text } from "@components";
 import { color } from "@theme";
+import { Text } from "../text/Text";
 
 export const TextInput: FC<TTextInputProps> = ({
   label,
