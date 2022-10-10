@@ -5,7 +5,7 @@ import {
   HomeScreen,
   ExamScreen,
   ResultScreen,
-  CardDetailsScreen,
+  ArticlesScreen,
 } from "@screens";
 
 const Stack = createNativeStackNavigator();
@@ -22,7 +22,7 @@ export const Router = () => {
       <Stack.Screen name="ExamScreen" component={ExamScreen} />
       <Stack.Screen name="ResultScreen" component={ResultScreen} />
 
-      <Stack.Screen name="CardDetailsScreen" component={CardDetailsScreen} />
+      <Stack.Screen name="ArticlesScreen" component={ArticlesScreen} />
     </Stack.Navigator>
   );
 };

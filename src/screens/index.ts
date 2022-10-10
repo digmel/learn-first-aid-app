@@ -6,4 +6,4 @@ export * from "./exam/ExamScreen";
 
 export * from "./result/ResultScreen";
 
-export * from "./cardDetails/CardDetailsScreen";
+export * from "./articles/ArticlesScreen";

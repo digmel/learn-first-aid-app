@@ -32,14 +32,14 @@ export const HomeScreen: FC<THomeScreenProps> = ({ navigation }) => {
     navigation.navigate("ExamScreen");
   };
 
-  const openCardDetails = (navigation_name: string) => {
-    navigation.navigate("CardDetailsScreen", { navigation_name });
+  const openArticles = (id: string) => {
+    navigation.navigate("ArticlesScreen", { id });
   };
 
   return (
     <HomeScreenView
       openExam={openExam}
-      openCardDetails={openCardDetails}
+      openArticles={openArticles}
       injuriesData={injuriesData}
       disastersData={disastersData}
     />

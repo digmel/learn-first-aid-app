@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { styles } from "./CardDetailsScreen.style";
+import { styles } from "./ArticlesScreen.style";
 import { Screen, Text, Section, List, Svg } from "@components";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getSvgURL } from "@utils";
 import { View } from "react-native";
 
-export const CardDetailsScreen = ({ route }) => {
+export const ArticlesScreen = ({ route }) => {
   const [content, setContent] = useState<Record<string, Array<string>>>();
   const [svgURL, setSvgURL] = useState<string[]>();
   const { navigation_name } = route.params;
