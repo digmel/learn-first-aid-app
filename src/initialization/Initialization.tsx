@@ -6,20 +6,14 @@ import { supabase } from "@configs";
 //TODO: add update storage
 // AsyncStorage.clear();
 
-// const card2data = res.map((item) => {
-//   if (item.card_id !== null && item.card_id.name === "card 2") {
-//     return item;
-//   }
-// });
-
 export const Initialization: FC<TInitialization> = ({ children }) => {
   const [fetchedError, setFetchedError] = useState(null);
 
   // Fetch Screens data from database
-  const fetchScreenData = async () => {
+  const fetchArticlesMeta = async () => {
     try {
-      const { data: screens, error } = await supabase
-        .from("screens")
+      const { data: articles_metadata, error } = await supabase
+        .from("articles_metadata")
         .select(`*`);
 
       if (error) {
@@ -27,7 +21,25 @@ export const Initialization: FC<TInitialization> = ({ children }) => {
         throw new Error("Error from supabase", fetchedError);
       }
 
-      return screens;
+      return articles_metadata;
+    } catch ({ message }) {
+      throw new Error("fetchScreenData error", message);
+    }
+  };
+
+  // Fetch Article sections data from database
+  const fetchArticlesContent = async () => {
+    try {
+      const { data: articles_content, error } = await supabase
+        .from("articles_content")
+        .select(`*`);
+
+      if (error) {
+        setFetchedError(error);
+        throw new Error("Error from supabase", fetchedError);
+      }
+
+      return articles_content;
     } catch ({ message }) {
       throw new Error("fetchScreenData error", message);
     }
@@ -42,10 +54,17 @@ export const Initialization: FC<TInitialization> = ({ children }) => {
     }
   };
 
-  // Get screens data from database & stores it in AsyncStorage at "@screens_content"
+  // Get Articles meta data from database & stores it in AsyncStorage at "@articles_metadata"
   useEffect(() => {
-    fetchScreenData().then((res) =>
-      storeData("@screens_content", JSON.stringify(res))
+    fetchArticlesMeta().then((res) =>
+      storeData("@articles_metadata", JSON.stringify(res))
+    );
+  }, []);
+
+  // Get Articles content from database & stores it in AsyncStorage at "@articles_content"
+  useEffect(() => {
+    fetchArticlesContent().then((res) =>
+      storeData("@articles_content", JSON.stringify(res))
     );
   }, []);
 

@@ -7,14 +7,14 @@ export const HomeScreen: FC<THomeScreenProps> = ({ navigation }) => {
   const [injuriesData, setInjuriesData] = useState([]);
   const [disastersData, setDisastersData] = useState([]);
 
-  const getCardScreensData = async () => {
+  const getArticles = async () => {
     try {
-      const screensJSON = await AsyncStorage.getItem("@screens_content");
-      const screens = JSON.parse(screensJSON);
+      const dataJSON = await AsyncStorage.getItem("@articles_metadata");
+      const data = JSON.parse(dataJSON);
 
-      const injuries = screens.filter((screen) => screen.topic === "injuries");
-      const disasters = screens.filter(
-        (screen) => screen.topic === "natural_disaster"
+      const injuries = data.filter((article) => article.topic === "injuries");
+      const disasters = data.filter(
+        (article) => article.topic === "natural_disaster"
       );
 
       setDisastersData(disasters);
@@ -25,7 +25,7 @@ export const HomeScreen: FC<THomeScreenProps> = ({ navigation }) => {
   };
 
   useEffect(() => {
-    getCardScreensData();
+    getArticles();
   }, []);
 
   const openExam = () => {

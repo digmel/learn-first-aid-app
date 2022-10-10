@@ -40,13 +40,13 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
         <Section topSpace={size.l}>
           <CardSlider title="Learn " subTitle="Injuries">
             {injuriesData &&
-              injuriesData.map((screen) => (
+              injuriesData.map((article) => (
                 <Card
-                  key={screen.id}
-                  title={screen.display_name}
-                  svgPath={screen.cover_path}
+                  key={article.id}
+                  title={article.name}
+                  svgPath={article.cover_path}
                   onPress={() => {
-                    openArticles(screen.id);
+                    openArticles(article.id);
                   }}
                 />
               ))}
@@ -56,13 +56,13 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
         <Section topSpace={size.l}>
           <CardSlider title="Learn " subTitle="Natural Disasters">
             {disastersData &&
-              disastersData.map((screen) => (
+              disastersData.map((article) => (
                 <Card
-                  key={screen.id}
-                  title={screen.display_name}
-                  svgPath={screen.cover_path}
+                  key={article.id}
+                  title={article.name}
+                  svgPath={article.cover_path}
                   onPress={() => {
-                    openArticles(screen.id);
+                    openArticles(article.id);
                   }}
                 />
               ))}
