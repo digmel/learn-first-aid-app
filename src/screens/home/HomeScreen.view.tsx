@@ -44,7 +44,7 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
                 <Card
                   key={card.id}
                   title={card.display_name}
-                  svg={card.navigation_name}
+                  svgPath={card.cover_path}
                   onPress={() => {
                     openCardDetails(card.navigation_name);
                   }}
@@ -60,7 +60,7 @@ export const HomeScreenView: FC<THomeScreenViewProps> = ({
                 <Card
                   key={card.id}
                   title={card.display_name}
-                  svg={card.navigation_name}
+                  svgPath={card.cover_path}
                   onPress={() => {
                     openCardDetails(card.navigation_name);
                   }}

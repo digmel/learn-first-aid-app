@@ -1,5 +1,5 @@
 export type TCardProps = {
   title: String;
-  svg: string;
+  svgPath: string;
   onPress?: Function;
 };

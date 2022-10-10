@@ -6,13 +6,21 @@ import { supabase } from "@configs";
 //TODO: add update storage
 // AsyncStorage.clear();
 
+// const card2data = res.map((item) => {
+//   if (item.card_id !== null && item.card_id.name === "card 2") {
+//     return item;
+//   }
+// });
+
 export const Initialization: FC<TInitialization> = ({ children }) => {
   const [fetchedError, setFetchedError] = useState(null);
 
   // Fetch Screens data from database
   const fetchScreenData = async () => {
     try {
-      const { data: screens, error } = await supabase.from("screens").select();
+      const { data: screens, error } = await supabase
+        .from("screens")
+        .select(`*`);
 
       if (error) {
         setFetchedError(error);
