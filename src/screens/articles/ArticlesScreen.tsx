@@ -6,6 +6,7 @@ import { View } from "react-native";
 
 export const ArticlesScreen = ({ route }) => {
   const [content, setContent] = useState([]);
+  const [articleName, setArticleName] = useState<string>();
   const { id } = route.params;
 
   const getContent = async () => {
@@ -13,15 +14,16 @@ export const ArticlesScreen = ({ route }) => {
       const dataJSON = await AsyncStorage.getItem("@articles_content");
       const data = JSON.parse(dataJSON);
 
-      const sections = data.filter((section) => {
-        if (section.article_id === id) {
-          return section;
+      const articleData = data.filter((content) => {
+        if (content.article.id === id) {
+          setArticleName(content.article.name);
+          return content;
         }
       });
 
-      sections.sort((a, b) => a.order - b.order);
+      articleData.sort((a, b) => a.order - b.order);
 
-      setContent(sections);
+      setContent(articleData);
     } catch ({ message }) {
       throw new Error("getScreenData error at CardDetailsScreen", message);
     }
@@ -32,7 +34,7 @@ export const ArticlesScreen = ({ route }) => {
   }, []);
 
   return (
-    <Screen isHeaderSticky hasHeader hasBack style={styles.container}>
+    <Screen hasHeader hasBack title={articleName} style={styles.container}>
       {content.map((section, index) => (
         <Section key={index} title={section.title} subtitle={section.subtitle}>
           {section.svg_path && (

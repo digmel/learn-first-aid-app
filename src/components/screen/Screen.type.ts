@@ -13,6 +13,7 @@ export type TScreenProps = {
   hasHeader?: boolean;
   hasBack?: boolean;
   headerStyle?: StyleProp<ViewStyle>;
+  title?: string;
 
   isScrollViewDisabled?: boolean;
   isFooterSticky?: boolean;

@@ -3,9 +3,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { TInitialization } from "./Initialization.type";
 import { supabase } from "@configs";
 
-//TODO: add update storage
-// AsyncStorage.clear();
-
 export const Initialization: FC<TInitialization> = ({ children }) => {
   const [fetchedError, setFetchedError] = useState(null);
 
@@ -32,7 +29,7 @@ export const Initialization: FC<TInitialization> = ({ children }) => {
     try {
       const { data: articles_content, error } = await supabase
         .from("articles_content")
-        .select(`*`);
+        .select(`*, article(id, name)`);
 
       if (error) {
         setFetchedError(error);

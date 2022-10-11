@@ -7,6 +7,7 @@ import { size } from "@theme";
 import { Header } from "../header/Header";
 
 export const Screen: FC<TScreenProps> = ({
+  title,
   containerStyle,
   contentStyle,
   children,
@@ -40,25 +41,12 @@ export const Screen: FC<TScreenProps> = ({
 
   return (
     <View style={styles.globalWrapper} {...props}>
-      {!!hasHeader && isHeaderSticky && (
-        <View
-          style={[
-            styles.header,
-            headerStyle,
-            styles.stickyHeader,
-            containerStyle,
-          ]}
-        >
-          <Header hasBack />
+      {hasHeader && (
+        <View style={styles.header}>
+          <Header hasBack title={title} />
         </View>
       )}
       <Container {...containerDynamicStyle}>
-        {!!hasHeader && !isHeaderSticky && (
-          <View style={[styles.header, headerStyle]}>
-            <Header hasBack />
-          </View>
-        )}
-
         <View style={[styles.content, contentDynamicStyle, contentStyle]}>
           {children}
         </View>

@@ -14,10 +14,6 @@ export const styles = StyleSheet.create({
   },
 
   header: {
-    zIndex: 1,
-  },
-
-  stickyHeader: {
     top: 0,
     left: 0,
     right: 0,

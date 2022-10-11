@@ -1,23 +1,25 @@
 import { StyleSheet } from "react-native";
-import { size } from "@theme";
+import { color } from "@theme";
 
 export const styles = StyleSheet.create({
   container: {
-    paddingBottom: size.l,
-    paddingHorizontal: size.l,
     flexDirection: "row",
     justifyContent: "space-between",
+    borderBottomColor: color.gray300,
+    borderBottomWidth: 0.5,
+    paddingBottom: 4,
   },
   content: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  containerLeft: {
+  containerStart: {
     justifyContent: "center",
-    paddingRight: size.l,
+    flexBasis: "20%",
   },
-  containerRight: {
+  containerEnd: {
+    flexBasis: "20%",
     justifyContent: "center",
   },
 });
