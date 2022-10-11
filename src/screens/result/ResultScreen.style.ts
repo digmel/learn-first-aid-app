@@ -4,11 +4,8 @@ export const styles = StyleSheet.create({
   container: {},
 
   textContainer: {
-    flexBasis: "80%",
+    flex: 1,
   },
 
-  buttonContainer: {
-    flexBasis: "20%",
-    justifyContent: "center",
-  },
+  buttonContainer: {},
 });

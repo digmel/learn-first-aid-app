@@ -1,22 +1,16 @@
 import React, { FC, useState, useEffect } from "react";
 import { ExamScreenView } from "./ExamScreen.view";
-import {
-  TAnswer,
-  TAnswerStatus,
-  TExamScreenProps,
-  TQuestions,
-} from "./ExamScreen.type";
-import { Questions } from "./questions";
+import { TAnswer, TAnswerStatus, TExamScreenProps } from "./ExamScreen.type";
 import { useStore } from "@store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
-  const [_index, _setIndex] = useState(0);
-  const [_examData, _setExamData] = useState<TQuestions>(Questions[_index]);
-  const [_showDetails, _setShowDetails] = useState(false);
+  const { dispatch } = useStore();
+  const [index, setIndex] = useState(0);
+  const [examData, setExamData] = useState<any[]>([]);
+  const [showDetails, setShowDetails] = useState(false);
 
-  const [allSelectedAnswers, setAllSelectedAnswers] = useState<
-    Array<Array<String>>
-  >([]);
+  const [allSelectedAnswers, setAllSelectedAnswers] = useState([]);
   const [selectedData, setSelectedData] = useState<Array<String>>([]);
 
   const [_isNextButtonDisabled, _setNextButtonDisabled] = useState(true);
@@ -31,12 +25,23 @@ export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
   const [_answerC, _setAnswerC] = useState<TAnswerStatus>("Empty");
   const [_answerD, _setAnswerD] = useState<TAnswerStatus>("Empty");
 
+  // Get Exam data from AsyncStorage
+  const getExamData = async () => {
+    try {
+      const dataJSON = await AsyncStorage.getItem("@exam_tests");
+      const data = JSON.parse(dataJSON);
+      setExamData(data);
+    } catch ({ message }) {
+      throw new Error("getCardScreensData error at HomeScreen", message);
+    }
+  };
+
   const CheckAnswers = (selectedAnswer: TAnswer | String) => {
     let AnswerStatusInList: TAnswerStatus = "Empty";
 
-    _setShowDetails(true);
+    setShowDetails(true);
 
-    if (Questions[_index].answer === selectedAnswer) {
+    if (examData[index].correct_answer === selectedAnswer) {
       AnswerStatusInList = "Correct";
       _setAnswerStatus(true);
       _setTestButtonDisabled(true);
@@ -77,20 +82,18 @@ export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
   };
 
   const ShowSelectedAnswers = () => {
-    if (allSelectedAnswers.length > 0 && allSelectedAnswers[_index]) {
-      allSelectedAnswers[_index].forEach((selected: TAnswer | String) => {
+    if (allSelectedAnswers.length > 0 && allSelectedAnswers[index]) {
+      allSelectedAnswers[index].forEach((selected: TAnswer | String) => {
         CheckAnswers(selected);
       });
     }
   };
 
-  const { dispatch } = useStore();
-
   const CountCorrectAnswers = () => {
     for (let i = 0; i < allSelectedAnswers.length; i++) {
       const firstSelection = allSelectedAnswers[i][0];
 
-      if (firstSelection === Questions[i].answer) {
+      if (firstSelection === examData[i].correct_answer) {
         dispatch({ type: "incrementResult" });
       }
     }
@@ -113,51 +116,56 @@ export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
     CheckAnswers("D");
   };
 
-  const _onPressNext = () => {
+  // Go Next
+  const onPressNext = () => {
+    setIndex(index + 1);
     ClearAnswers();
-    _setIndex(_index + 1);
-    _setShowDetails(false);
+    setShowDetails(false);
 
     if (selectedData.length > 0) {
       setAllSelectedAnswers([...allSelectedAnswers, selectedData]);
     }
 
-    _setTestButtonDisabled(false);
     _setPreviousButtonDisabled(false);
+    _setTestButtonDisabled(false);
     _setNextButtonDisabled(true);
   };
 
-  const _onPressPrevious = () => {
+  // Go back
+  const onPressPrevious = () => {
+    setIndex(index - 1);
     ClearAnswers();
-    _setIndex(_index - 1);
-    _setShowDetails(true);
+    setShowDetails(true);
 
     _setTestButtonDisabled(true);
     _setNextButtonDisabled(false);
   };
 
   useEffect(() => {
-    _setExamData(Questions[_index]);
     ShowSelectedAnswers();
 
-    if (_index === 0) {
+    if (index === 0) {
       _setPreviousButtonDisabled(true);
     }
 
-    if (_index === 3) {
+    if (index === 3) {
       navigation.navigate("ResultScreen");
       CountCorrectAnswers();
       ClearAnswers();
-      _setIndex(0);
+      setIndex(0);
       setAllSelectedAnswers([]);
     }
-  });
+  }, [index]);
+
+  useEffect(() => {
+    getExamData();
+  }, []);
 
   return (
     <ExamScreenView
-      index={_index}
-      onPressNext={_onPressNext}
-      onPressPrevious={_onPressPrevious}
+      index={index}
+      onPressNext={onPressNext}
+      onPressPrevious={onPressPrevious}
       onPressA={_onPressA}
       onPressB={_onPressB}
       onPressC={_onPressC}
@@ -167,8 +175,8 @@ export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
       AnswerC={_answerC}
       AnswerD={_answerD}
       AnswerStatus={_answerStatus}
-      showDetails={_showDetails}
-      examData={_examData}
+      showDetails={showDetails}
+      examData={examData}
       isNextButtonDisabled={_isNextButtonDisabled}
       isPreviousButtonDisabled={_isPreviousButtonDisabled}
       isTestButtonDisabled={_isTestButtonDisabled}

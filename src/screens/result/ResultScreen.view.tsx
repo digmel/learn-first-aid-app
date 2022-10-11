@@ -47,13 +47,7 @@ export const ResultScreenView: FC<TResultScreenViewProps> = ({
           <Button text="Try Again" onPress={onPressTryAgain} />
         </Section>
 
-        <Section>
-          <Button
-            text="Back to Home"
-            variation="link"
-            onPress={onPressGoHome}
-          />
-        </Section>
+        <Button text="Back to Home" variation="link" onPress={onPressGoHome} />
       </View>
     </Screen>
   );

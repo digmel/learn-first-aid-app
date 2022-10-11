@@ -28,7 +28,7 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
     <Screen isScrollable={false}>
       <View style={styles.container}>
         <Section>
-          <Text variation="body_bold">{examData.question}</Text>
+          <Text variation="body_bold">{examData[index]?.question}</Text>
         </Section>
 
         <Section>
@@ -37,7 +37,7 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
             onPress={onPressA}
             isDisabled={isTestButtonDisabled}
           >
-            {examData.A}
+            {examData[index]?.variant_A}
           </List>
         </Section>
 
@@ -47,7 +47,7 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
             onPress={onPressB}
             isDisabled={isTestButtonDisabled}
           >
-            {examData.B}
+            {examData[index]?.variant_B}
           </List>
         </Section>
 
@@ -57,7 +57,7 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
             onPress={onPressC}
             isDisabled={isTestButtonDisabled}
           >
-            {examData.C}
+            {examData[index]?.variant_C}
           </List>
         </Section>
 
@@ -67,7 +67,7 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
             onPress={onPressD}
             isDisabled={isTestButtonDisabled}
           >
-            {examData.D}
+            {examData[index]?.variant_D}
           </List>
         </Section>
 
@@ -88,7 +88,7 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
               </View>
 
               <View style={styles.details}>
-                <Text variation="subtitle">{examData.details}</Text>
+                <Text variation="subtitle">{examData[index]?.details}</Text>
               </View>
             </View>
           )}

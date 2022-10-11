@@ -1,6 +1,6 @@
-export type TAnswerStatus = 'Empty' | 'Correct' | 'Wrong';
+export type TAnswerStatus = "Empty" | "Correct" | "Wrong";
 
-export type TAnswer = 'A' | 'B' | 'C' | 'D';
+export type TAnswer = "A" | "B" | "C" | "D";
 
 export type TQuestions = {
   question: String;
@@ -26,7 +26,7 @@ export type TExamScreenViewProps = {
   AnswerC: TAnswerStatus;
   AnswerD: TAnswerStatus;
   AnswerStatus: boolean | undefined;
-  examData: TQuestions;
+  examData: any;
   isNextButtonDisabled: boolean;
   isPreviousButtonDisabled: boolean;
   isTestButtonDisabled: boolean;
