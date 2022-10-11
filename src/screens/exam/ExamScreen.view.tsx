@@ -26,7 +26,7 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
 }) => {
   return (
     <Screen isScrollable={false}>
-      <View style={styles.testView}>
+      <View style={styles.container}>
         <Section>
           <Text variation="body_bold">{examData.question}</Text>
         </Section>
@@ -70,51 +70,47 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
             {examData.D}
           </List>
         </Section>
+
+        <Section
+          isFullWidth
+          contentStyle={styles.detailsSection}
+          topSpace={size.m}
+        >
+          {showDetails && (
+            <View style={styles.detailsView}>
+              <View style={styles.headline}>
+                <Text
+                  variation="body_bold"
+                  color={AnswerStatus ? color.success : color.error}
+                >
+                  {AnswerStatus ? "Correct" : "Wrong"}
+                </Text>
+              </View>
+
+              <View style={styles.details}>
+                <Text variation="subtitle">{examData.details}</Text>
+              </View>
+            </View>
+          )}
+        </Section>
       </View>
-
-      <Section
-        isFullWidth
-        contentStyle={styles.detailsSection}
-        topSpace={size.m}
-      >
-        {showDetails && (
-          <View style={styles.detailsView}>
-            <View style={styles.headline}>
-              <Text
-                variation="body_bold"
-                color={AnswerStatus ? color.success : color.error}
-              >
-                {AnswerStatus ? "Correct" : "Wrong"}
-              </Text>
-            </View>
-
-            <View style={styles.details}>
-              <Text variation="subtitle">{examData.details}</Text>
-            </View>
-          </View>
-        )}
-      </Section>
 
       <Section isCentered>
         <ProgressBar progressIndex={index} />
       </Section>
 
-      <View style={styles.navigationContainer}>
-        <View style={styles.buttonContainer}>
-          <Button
-            text="Previous"
-            variation="secondary"
-            onPress={onPressPrevious}
-            isDisabled={isPreviousButtonDisabled}
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            text="Next"
-            onPress={onPressNext}
-            isDisabled={isNextButtonDisabled}
-          />
-        </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          text="Previous"
+          variation="secondary"
+          onPress={onPressPrevious}
+          isDisabled={isPreviousButtonDisabled}
+        />
+        <Button
+          text="Next"
+          onPress={onPressNext}
+          isDisabled={isNextButtonDisabled}
+        />
       </View>
     </Screen>
   );

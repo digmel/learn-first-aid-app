@@ -2,7 +2,15 @@ import { StyleSheet } from "react-native";
 import { size, color } from "@theme";
 
 export const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    paddingTop: 32,
+  },
+
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 
   content: {
     justifyContent: "space-between",
@@ -31,16 +39,5 @@ export const styles = StyleSheet.create({
 
   details: {
     marginHorizontal: size.xl,
-  },
-
-  navigationContainer: {
-    flexBasis: "15%",
-    flexDirection: "row",
-    alignItems: "flex-start",
-  },
-
-  buttonContainer: {
-    flexBasis: "50%",
-    paddingHorizontal: size.s,
   },
 });

@@ -49,8 +49,8 @@ export const ResultScreenView: FC<TResultScreenViewProps> = ({
 
         <Section>
           <Button
-            text="Go Home"
-            variation="secondary"
+            text="Back to Home"
+            variation="link"
             onPress={onPressGoHome}
           />
         </Section>

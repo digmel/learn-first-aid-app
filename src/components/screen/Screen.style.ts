@@ -20,9 +20,10 @@ export const styles = StyleSheet.create({
 
   content: {
     flex: 1,
-    paddingHorizontal: size.xl,
+    paddingHorizontal: size.l,
     paddingTop: 16,
     paddingBottom: 124,
+    marginBottom: 24,
   },
 
   footer: {

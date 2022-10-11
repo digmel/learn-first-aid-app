@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     borderRadius: size.xxl,
     justifyContent: "center",
     alignItems: "center",
+    minWidth: 150,
   },
   contentContainer: {
     flexDirection: "row",
