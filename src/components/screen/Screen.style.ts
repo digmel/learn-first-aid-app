@@ -1,8 +1,6 @@
 import { StyleSheet } from "react-native";
 import { size, color } from "@theme";
 
-const PADDING_HORIZONTAL = size.xl;
-
 export const styles = StyleSheet.create({
   globalWrapper: {
     flex: 1,
@@ -22,12 +20,12 @@ export const styles = StyleSheet.create({
 
   content: {
     flex: 1,
-    paddingHorizontal: PADDING_HORIZONTAL,
+    paddingHorizontal: size.xl,
+    paddingTop: 16,
+    paddingBottom: 124,
   },
 
-  footer: {},
-
-  stickyFooter: {
+  footer: {
     bottom: 0,
     left: 0,
     right: 0,

@@ -14,7 +14,7 @@ export const ResultScreenView: FC<TResultScreenViewProps> = ({
   correctAnswersValue,
 }) => {
   return (
-    <Screen isScrollViewDisabled>
+    <Screen isScrollable={false}>
       <View style={styles.textContainer}>
         <Section topSpace={size.xxl} bottomSpace={size.xl} isCentered>
           <Text variation="H1_bold">Congratulations!</Text>

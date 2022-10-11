@@ -3,63 +3,60 @@ import { View, ScrollView } from "react-native";
 import { styles } from "./Screen.style";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TScreenProps } from "./Screen.type";
-import { size } from "@theme";
 import { Header } from "../header/Header";
+import { LinearGradient } from "expo-linear-gradient";
+import { size, color } from "@theme";
 
 export const Screen: FC<TScreenProps> = ({
-  title,
-  containerStyle,
-  contentStyle,
   children,
+  header,
   footer,
-  footerStyle,
-  hasHeader,
-  hasBack,
-  headerStyle,
-  isScrollViewDisabled = false,
-  isFooterSticky = false,
-  isHeaderSticky = false,
-  ...props
+  isScrollable = true,
+  isGradient = false,
 }) => {
   const { bottom: spaceBottom, top: spaceTop } = useSafeAreaInsets();
 
-  const safeAreaStyle = !hasHeader &&
+  const safeAreaStyle = !header &&
     !footer && {
       paddingTop: spaceTop === 0 ? size.xl : spaceTop,
       paddingBottom: spaceBottom === 0 ? size.xl : spaceBottom,
     };
 
-  const contentDynamicStyle = {
-    ...safeAreaStyle,
-  };
+  const Container = isScrollable ? ScrollView : View;
 
-  const Container = isScrollViewDisabled ? View : ScrollView;
-
-  const containerDynamicStyle = isScrollViewDisabled
-    ? { style: [styles.container, containerStyle] }
-    : { contentContainerStyle: [styles.container, containerStyle] };
+  const containerStyle = isScrollable
+    ? { contentContainerStyle: styles.container }
+    : { style: styles.container };
 
   return (
-    <View style={styles.globalWrapper} {...props}>
-      {hasHeader && (
-        <View style={styles.header}>
-          <Header hasBack title={title} />
-        </View>
+    <View style={styles.globalWrapper}>
+      {isGradient && (
+        <LinearGradient
+          colors={[color.gradientStart, color.gradientEnd]}
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 0,
+            height: "200%",
+          }}
+        />
       )}
-      <Container {...containerDynamicStyle}>
-        <View style={[styles.content, contentDynamicStyle, contentStyle]}>
-          {children}
-        </View>
 
-        {!!footer && !isFooterSticky && (
-          <View style={[styles.footer, footerStyle]}>{footer}</View>
-        )}
-      </Container>
-      {!!footer && isFooterSticky && (
-        <View style={[styles.footer, footerStyle, styles.stickyFooter]}>
-          {footer}
+      {header && (
+        <View style={styles.header}>
+          <Header
+            title={header.title}
+            hasBack={header.hasBack}
+            hasMenu={header.hasMenu}
+          />
         </View>
       )}
+
+      <Container {...containerStyle}>
+        <View style={[styles.content, safeAreaStyle]}>{children}</View>
+      </Container>
+      {footer && <View style={styles.footer}>{footer}</View>}
     </View>
   );
 };

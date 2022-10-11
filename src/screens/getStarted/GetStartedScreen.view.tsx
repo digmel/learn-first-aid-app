@@ -9,7 +9,7 @@ export const GetStartedScreenView: FC<TGetStartedViewProps> = ({
   openHome,
 }) => {
   return (
-    <Screen isScrollViewDisabled>
+    <Screen isScrollable={false}>
       <Section containerStyle={styles.svgContainer} bottomSpace={size.xxl}>
         <GetStartedSVG />
       </Section>

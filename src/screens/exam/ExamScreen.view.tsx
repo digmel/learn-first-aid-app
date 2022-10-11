@@ -25,7 +25,7 @@ export const ExamScreenView: FC<TExamScreenViewProps> = ({
   isTestButtonDisabled,
 }) => {
   return (
-    <Screen isScrollViewDisabled contentStyle={styles.content}>
+    <Screen isScrollable={false}>
       <View style={styles.testView}>
         <Section>
           <Text variation="body_bold">{examData.question}</Text>

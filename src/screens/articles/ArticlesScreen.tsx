@@ -34,7 +34,10 @@ export const ArticlesScreen = ({ route }) => {
   }, []);
 
   return (
-    <Screen hasHeader hasBack title={articleName} style={styles.container}>
+    <Screen
+      header={{ title: articleName, hasBack: true }}
+      style={styles.container}
+    >
       {content.map((section, index) => (
         <Section key={index} title={section.title} subtitle={section.subtitle}>
           {section.svg_path && (
