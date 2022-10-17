@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
-import { TExamIntroScreenProps } from "./ExamIntroScreen.type";
-import { ExamIntroScreenView } from "./ExamIntroScreen.view";
+import { TQuizIntroScreenProps } from "./QuizIntroScreen.type";
+import { QuizIntroScreenView } from "./QuizIntroScreen.view";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { supabase } from "@configs";
 
-export const ExamIntroScreen: FC<TExamIntroScreenProps> = ({ navigation }) => {
+export const QuizIntroScreen: FC<TQuizIntroScreenProps> = ({ navigation }) => {
   const [fetchedError, setFetchedError] = useState(null);
 
   // Fetch Exam Tests data from database
@@ -44,5 +44,5 @@ export const ExamIntroScreen: FC<TExamIntroScreenProps> = ({ navigation }) => {
     navigation.navigate("ExamScreen");
   };
 
-  return <ExamIntroScreenView openHome={openHome} />;
+  return <QuizIntroScreenView openHome={openHome} />;
 };

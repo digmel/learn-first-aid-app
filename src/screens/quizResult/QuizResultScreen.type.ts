@@ -1,8 +1,8 @@
-export type TResultScreenProps = {
+export type TQuizResultScreenProps = {
   navigation: any;
 };
 
-export type TResultScreenViewProps = {
+export type TQuizResultScreenViewProps = {
   onPressGoHome: Function;
   onPressTryAgain: Function;
   correctAnswersValue: number;

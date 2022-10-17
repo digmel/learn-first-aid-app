@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import { TExamScreenViewProps } from "./ExamScreen.type";
-import { styles } from "./ExamScreen.style";
+import { TQuizScreenViewProps } from "./QuizScreen.type";
+import { styles } from "./QuizScreen.style";
 import { Section, Screen, Text, List, Button, ProgressBar } from "@components";
 import { View } from "react-native";
 import { size, color } from "@theme";
 
-export const ExamScreenView: FC<TExamScreenViewProps> = ({
+export const QuizScreenView: FC<TQuizScreenViewProps> = ({
   index,
   onPressNext,
   onPressPrevious,

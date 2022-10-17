@@ -1,9 +1,11 @@
 import { useStore } from "@store";
 import React, { FC } from "react";
-import { TResultScreenProps } from "./ResultScreen.type";
-import { ResultScreenView } from "./ResultScreen.view";
+import { TQuizResultScreenProps } from "./QuizResultScreen.type";
+import { QuizResultScreenView } from "./QuizResultScreen.view";
 
-export const ResultScreen: FC<TResultScreenProps> = ({ navigation }) => {
+export const QuizResultScreen: FC<TQuizResultScreenProps> = ({
+  navigation,
+}) => {
   const { store, dispatch } = useStore();
 
   const _onPressGoHome = () => {
@@ -16,7 +18,7 @@ export const ResultScreen: FC<TResultScreenProps> = ({ navigation }) => {
     navigation.navigate("ExamScreen");
   };
   return (
-    <ResultScreenView
+    <QuizResultScreenView
       onPressGoHome={_onPressGoHome}
       onPressTryAgain={_onPressTryAgain}
       correctAnswersValue={store.resultCounter.correctAnswer}

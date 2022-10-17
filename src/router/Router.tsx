@@ -3,9 +3,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   GetStartedScreen,
   HomeScreen,
-  ExamScreen,
-  ExamIntroScreen,
-  ResultScreen,
+  QuizScreen,
+  QuizIntroScreen,
+  QuizResultScreen,
   ArticlesScreen,
 } from "@screens";
 
@@ -20,10 +20,9 @@ export const Router = () => {
     >
       <Stack.Screen name="GetStartedScreen" component={GetStartedScreen} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="ExamScreen" component={ExamScreen} />
-      <Stack.Screen name="ExamIntroScreen" component={ExamIntroScreen} />
-      <Stack.Screen name="ResultScreen" component={ResultScreen} />
-
+      <Stack.Screen name="QuizScreen" component={QuizScreen} />
+      <Stack.Screen name="QuizIntroScreen" component={QuizIntroScreen} />
+      <Stack.Screen name="QuizResultScreen" component={QuizResultScreen} />
       <Stack.Screen name="ArticlesScreen" component={ArticlesScreen} />
     </Stack.Navigator>
   );

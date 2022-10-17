@@ -1,10 +1,10 @@
 import React, { FC, useState, useEffect } from "react";
-import { ExamScreenView } from "./ExamScreen.view";
-import { TAnswer, TAnswerStatus, TExamScreenProps } from "./ExamScreen.type";
+import { QuizScreenView } from "./QuizScreen.view";
+import { TAnswer, TAnswerStatus, TQuizScreenProps } from "./QuizScreen.type";
 import { useStore } from "@store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
+export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
   const { dispatch } = useStore();
   const [index, setIndex] = useState(0);
   const [examData, setExamData] = useState<any[]>([]);
@@ -162,7 +162,7 @@ export const ExamScreen: FC<TExamScreenProps> = ({ navigation }) => {
   }, []);
 
   return (
-    <ExamScreenView
+    <QuizScreenView
       index={index}
       onPressNext={onPressNext}
       onPressPrevious={onPressPrevious}

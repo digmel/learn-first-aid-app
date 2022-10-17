@@ -1,12 +1,12 @@
 import React, { FC } from "react";
-import { styles } from "./ExamIntroScreen.style";
-import { TExamIntroViewProps } from "./ExamIntroScreen.type";
+import { styles } from "./QuizIntroScreen.style";
+import { TQuizIntroViewProps } from "./QuizIntroScreen.type";
 import { Screen, Button, Section, Text } from "@components";
 import ExamIntroSVG from "@assets/ExamIntro.svg";
 import { size } from "@theme";
 import { View } from "react-native";
 
-export const ExamIntroScreenView: FC<TExamIntroViewProps> = ({ openHome }) => {
+export const QuizIntroScreenView: FC<TQuizIntroViewProps> = ({ openHome }) => {
   return (
     <Screen isScrollable={false}>
       <View style={styles.container}>
