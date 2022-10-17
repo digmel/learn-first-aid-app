@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
   const { dispatch } = useStore();
   const [index, setIndex] = useState(0);
-  const [examData, setExamData] = useState<any[]>([]);
+  const [quizData, setQuizData] = useState<any[]>([]);
   const [showDetails, setShowDetails] = useState(false);
 
   const [allSelectedAnswers, setAllSelectedAnswers] = useState([]);
@@ -25,14 +25,14 @@ export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
   const [_answerC, _setAnswerC] = useState<TAnswerStatus>("Empty");
   const [_answerD, _setAnswerD] = useState<TAnswerStatus>("Empty");
 
-  // Get Exam data from AsyncStorage
-  const getExamData = async () => {
+  // Get Quiz data from AsyncStorage
+  const getQuizData = async () => {
     try {
-      const dataJSON = await AsyncStorage.getItem("@exam_tests");
+      const dataJSON = await AsyncStorage.getItem("@quiz_data");
       const data = JSON.parse(dataJSON);
-      setExamData(data);
+      setQuizData(data);
     } catch ({ message }) {
-      throw new Error("getCardScreensData error at HomeScreen", message);
+      throw new Error("getQuizData error", message);
     }
   };
 
@@ -41,7 +41,7 @@ export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
 
     setShowDetails(true);
 
-    if (examData[index].correct_answer === selectedAnswer) {
+    if (quizData[index].correct_answer === selectedAnswer) {
       AnswerStatusInList = "Correct";
       _setAnswerStatus(true);
       _setTestButtonDisabled(true);
@@ -93,7 +93,7 @@ export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
     for (let i = 0; i < allSelectedAnswers.length; i++) {
       const firstSelection = allSelectedAnswers[i][0];
 
-      if (firstSelection === examData[i].correct_answer) {
+      if (firstSelection === quizData[i].correct_answer) {
         dispatch({ type: "incrementResult" });
       }
     }
@@ -149,7 +149,7 @@ export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
     }
 
     if (index === 3) {
-      navigation.navigate("ResultScreen");
+      navigation.navigate("QuizResultScreen");
       CountCorrectAnswers();
       ClearAnswers();
       setIndex(0);
@@ -158,7 +158,7 @@ export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
   }, [index]);
 
   useEffect(() => {
-    getExamData();
+    getQuizData();
   }, []);
 
   return (
@@ -176,7 +176,7 @@ export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
       AnswerD={_answerD}
       AnswerStatus={_answerStatus}
       showDetails={showDetails}
-      examData={examData}
+      data={quizData}
       isNextButtonDisabled={_isNextButtonDisabled}
       isPreviousButtonDisabled={_isPreviousButtonDisabled}
       isTestButtonDisabled={_isTestButtonDisabled}

@@ -19,7 +19,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
   AnswerD,
   AnswerStatus,
   showDetails,
-  examData,
+  data,
   isPreviousButtonDisabled,
   isNextButtonDisabled,
   isTestButtonDisabled,
@@ -28,7 +28,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
     <Screen isScrollable={false}>
       <View style={styles.container}>
         <Section>
-          <Text variation="body_bold">{examData[index]?.question}</Text>
+          <Text variation="body_bold">{data[index]?.question}</Text>
         </Section>
 
         <Section>
@@ -37,7 +37,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
             onPress={onPressA}
             isDisabled={isTestButtonDisabled}
           >
-            {examData[index]?.variant_A}
+            {data[index]?.variant_A}
           </List>
         </Section>
 
@@ -47,7 +47,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
             onPress={onPressB}
             isDisabled={isTestButtonDisabled}
           >
-            {examData[index]?.variant_B}
+            {data[index]?.variant_B}
           </List>
         </Section>
 
@@ -57,7 +57,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
             onPress={onPressC}
             isDisabled={isTestButtonDisabled}
           >
-            {examData[index]?.variant_C}
+            {data[index]?.variant_C}
           </List>
         </Section>
 
@@ -67,7 +67,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
             onPress={onPressD}
             isDisabled={isTestButtonDisabled}
           >
-            {examData[index]?.variant_D}
+            {data[index]?.variant_D}
           </List>
         </Section>
 
@@ -88,7 +88,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
               </View>
 
               <View style={styles.details}>
-                <Text variation="subtitle">{examData[index]?.details}</Text>
+                <Text variation="subtitle">{data[index]?.details}</Text>
               </View>
             </View>
           )}

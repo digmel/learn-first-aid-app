@@ -29,7 +29,7 @@ export const HomeScreen: FC<THomeScreenProps> = ({ navigation }) => {
   }, []);
 
   const openExam = () => {
-    navigation.navigate("ExamIntroScreen");
+    navigation.navigate("QuizIntroScreen");
   };
 
   const openArticles = (id: string) => {

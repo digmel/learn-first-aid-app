@@ -26,7 +26,7 @@ export type TQuizScreenViewProps = {
   AnswerC: TAnswerStatus;
   AnswerD: TAnswerStatus;
   AnswerStatus: boolean | undefined;
-  examData: any;
+  data: any;
   isNextButtonDisabled: boolean;
   isPreviousButtonDisabled: boolean;
   isTestButtonDisabled: boolean;

@@ -8,10 +8,10 @@ export const QuizIntroScreen: FC<TQuizIntroScreenProps> = ({ navigation }) => {
   const [fetchedError, setFetchedError] = useState(null);
 
   // Fetch Exam Tests data from database
-  const fetchExamTests = async () => {
+  const fetchQuizData = async () => {
     try {
-      const { data: exam_tests, error } = await supabase
-        .from("exam_tests")
+      const { data: quiz_data, error } = await supabase
+        .from("quiz_data")
         .select(`*`);
 
       if (error) {
@@ -19,9 +19,9 @@ export const QuizIntroScreen: FC<TQuizIntroScreenProps> = ({ navigation }) => {
         throw new Error("Error from supabase", fetchedError);
       }
 
-      return exam_tests;
+      return quiz_data;
     } catch ({ message }) {
-      throw new Error("fetchScreenData error", message);
+      throw new Error("fetchQuizData error", message);
     }
   };
 
@@ -35,13 +35,11 @@ export const QuizIntroScreen: FC<TQuizIntroScreenProps> = ({ navigation }) => {
   };
 
   useEffect(() => {
-    fetchExamTests().then((res) =>
-      storeData("@exam_tests", JSON.stringify(res))
-    );
+    fetchQuizData().then((res) => storeData("@quiz_data", JSON.stringify(res)));
   }, []);
 
   const openHome = () => {
-    navigation.navigate("ExamScreen");
+    navigation.navigate("QuizScreen");
   };
 
   return <QuizIntroScreenView openHome={openHome} />;
