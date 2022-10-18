@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { TQuizIntroScreenProps } from "./QuizIntroScreen.type";
 import { QuizIntroScreenView } from "./QuizIntroScreen.view";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { supabase } from "@configs";
+import { supabase } from "api";
 
 export const QuizIntroScreen: FC<TQuizIntroScreenProps> = ({ navigation }) => {
   const [fetchedError, setFetchedError] = useState(null);

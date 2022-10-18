@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { TInitialization } from "./Initialization.type";
-import { supabase } from "@configs";
+import { supabase } from "../api";
 
 export const Initialization: FC<TInitialization> = ({ children }) => {
   const [fetchedError, setFetchedError] = useState(null);

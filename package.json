@@ -26,6 +26,7 @@
     "react-native": "0.69.6",
     "react-native-circular-progress-indicator": "^2.0.6",
     "react-native-config": "^1.4.4",
+    "react-native-dotenv": "^3.3.1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-reanimated": "^2.4.1",
     "react-native-safe-area-context": "^3.3.2",

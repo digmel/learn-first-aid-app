@@ -1,4 +1,4 @@
-import { supabase } from "@configs";
+import { supabase } from "api";
 
 export const getSvgURL = async (dirName: string, fileName: string) => {
   let url: string;
