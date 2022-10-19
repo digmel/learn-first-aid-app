@@ -7,11 +7,6 @@ export const styles = StyleSheet.create({
     paddingTop: 32,
   },
 
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-
   content: {
     justifyContent: "space-between",
   },

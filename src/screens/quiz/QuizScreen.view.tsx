@@ -3,12 +3,10 @@ import { TQuizScreenViewProps } from "./QuizScreen.type";
 import { styles } from "./QuizScreen.style";
 import { Section, Screen, Text, List, Button, ProgressBar } from "@components";
 import { View } from "react-native";
-import { size, color } from "@theme";
 
 export const QuizScreenView: FC<TQuizScreenViewProps> = ({
   index,
   onPressNext,
-  onPressPrevious,
   onPressA,
   onPressB,
   onPressC,
@@ -17,12 +15,9 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
   AnswerB,
   AnswerC,
   AnswerD,
-  AnswerStatus,
-  showDetails,
   data,
-  isPreviousButtonDisabled,
-  isNextButtonDisabled,
-  isTestButtonDisabled,
+  isNextDisabled,
+  isVariantDisabled,
 }) => {
   return (
     <Screen isScrollable={false}>
@@ -35,7 +30,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
           <List
             variation={AnswerA}
             onPress={onPressA}
-            isDisabled={isTestButtonDisabled}
+            isDisabled={isVariantDisabled}
           >
             {data[index]?.variant_A}
           </List>
@@ -45,7 +40,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
           <List
             variation={AnswerB}
             onPress={onPressB}
-            isDisabled={isTestButtonDisabled}
+            isDisabled={isVariantDisabled}
           >
             {data[index]?.variant_B}
           </List>
@@ -55,7 +50,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
           <List
             variation={AnswerC}
             onPress={onPressC}
-            isDisabled={isTestButtonDisabled}
+            isDisabled={isVariantDisabled}
           >
             {data[index]?.variant_C}
           </List>
@@ -65,33 +60,10 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
           <List
             variation={AnswerD}
             onPress={onPressD}
-            isDisabled={isTestButtonDisabled}
+            isDisabled={isVariantDisabled}
           >
             {data[index]?.variant_D}
           </List>
-        </Section>
-
-        <Section
-          isFullWidth
-          contentStyle={styles.detailsSection}
-          topSpace={size.m}
-        >
-          {showDetails && (
-            <View style={styles.detailsView}>
-              <View style={styles.headline}>
-                <Text
-                  variation="body_bold"
-                  color={AnswerStatus ? color.success : color.error}
-                >
-                  {AnswerStatus ? "Correct" : "Wrong"}
-                </Text>
-              </View>
-
-              <View style={styles.details}>
-                <Text variation="subtitle">{data[index]?.details}</Text>
-              </View>
-            </View>
-          )}
         </Section>
       </View>
 
@@ -99,19 +71,7 @@ export const QuizScreenView: FC<TQuizScreenViewProps> = ({
         <ProgressBar progressIndex={index} />
       </Section>
 
-      <View style={styles.buttonContainer}>
-        <Button
-          text="Previous"
-          variation="secondary"
-          onPress={onPressPrevious}
-          isDisabled={isPreviousButtonDisabled}
-        />
-        <Button
-          text="Next"
-          onPress={onPressNext}
-          isDisabled={isNextButtonDisabled}
-        />
-      </View>
+      <Button text="Next" onPress={onPressNext} isDisabled={isNextDisabled} />
     </Screen>
   );
 };

@@ -15,21 +15,17 @@ export type TQuestions = {
 export type TQuizScreenViewProps = {
   index: number;
   onPressNext: Function;
-  onPressPrevious: Function;
   onPressA: Function;
   onPressB: Function;
   onPressC: Function;
   onPressD: Function;
-  showDetails: boolean;
   AnswerA: TAnswerStatus;
   AnswerB: TAnswerStatus;
   AnswerC: TAnswerStatus;
   AnswerD: TAnswerStatus;
-  AnswerStatus: boolean | undefined;
   data: any;
-  isNextButtonDisabled: boolean;
-  isPreviousButtonDisabled: boolean;
-  isTestButtonDisabled: boolean;
+  isNextDisabled: boolean;
+  isVariantDisabled: boolean;
 };
 
 export type TQuizScreenProps = {

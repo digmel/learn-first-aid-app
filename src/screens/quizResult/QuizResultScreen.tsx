@@ -15,7 +15,7 @@ export const QuizResultScreen: FC<TQuizResultScreenProps> = ({
 
   const _onPressTryAgain = () => {
     dispatch({ type: "clearResult" });
-    navigation.navigate("ExamScreen");
+    navigation.navigate("QuizScreen");
   };
   return (
     <QuizResultScreenView

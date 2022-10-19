@@ -1,1 +1,1 @@
-export * from "./getSvgURL";
+export * from "./getQuizData";

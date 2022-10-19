@@ -2,170 +2,96 @@ import React, { FC, useState, useEffect } from "react";
 import { QuizScreenView } from "./QuizScreen.view";
 import { TAnswer, TAnswerStatus, TQuizScreenProps } from "./QuizScreen.type";
 import { useStore } from "@store";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getQuizData } from "@utils";
 
 export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
   const { dispatch } = useStore();
   const [index, setIndex] = useState(0);
   const [quizData, setQuizData] = useState<any[]>([]);
-  const [showDetails, setShowDetails] = useState(false);
-
-  const [allSelectedAnswers, setAllSelectedAnswers] = useState([]);
-  const [selectedData, setSelectedData] = useState<Array<String>>([]);
-
-  const [_isNextButtonDisabled, _setNextButtonDisabled] = useState(true);
-  const [_isPreviousButtonDisabled, _setPreviousButtonDisabled] =
-    useState(true);
-  const [_isTestButtonDisabled, _setTestButtonDisabled] = useState(false);
-
-  const [_answerStatus, _setAnswerStatus] = useState<boolean>();
-
+  const [isNextDisabled, setIsNextDisabled] = useState(true);
+  const [isVariantDisabled, setIsVariantDisabled] = useState(false);
+  const [selectedVariants, setSelectedVariants] = useState<Array<String>>([]);
   const [_answerA, _setAnswerA] = useState<TAnswerStatus>("Empty");
   const [_answerB, _setAnswerB] = useState<TAnswerStatus>("Empty");
   const [_answerC, _setAnswerC] = useState<TAnswerStatus>("Empty");
   const [_answerD, _setAnswerD] = useState<TAnswerStatus>("Empty");
 
-  // Get Quiz data from AsyncStorage
-  const getQuizData = async () => {
-    try {
-      const dataJSON = await AsyncStorage.getItem("@quiz_data");
-      const data = JSON.parse(dataJSON);
-      setQuizData(data);
-    } catch ({ message }) {
-      throw new Error("getQuizData error", message);
-    }
-  };
+  // Check Selected Variants to update UI
+  const checkVariant = (selection: TAnswer | String) => {
+    setSelectedVariants([...selectedVariants, selection]);
 
-  const CheckAnswers = (selectedAnswer: TAnswer | String) => {
-    let AnswerStatusInList: TAnswerStatus = "Empty";
-
-    setShowDetails(true);
-
-    if (quizData[index].correct_answer === selectedAnswer) {
-      AnswerStatusInList = "Correct";
-      _setAnswerStatus(true);
-      _setTestButtonDisabled(true);
-      _setNextButtonDisabled(false);
+    let status: TAnswerStatus;
+    if (selection === quizData[index].correct_answer) {
+      status = "Correct";
+      setIsNextDisabled(false);
+      setIsVariantDisabled(true);
     } else {
-      AnswerStatusInList = "Wrong";
-      _setAnswerStatus(false);
-      _setTestButtonDisabled(false);
-      _setNextButtonDisabled(true);
+      status = "Wrong";
     }
 
-    switch (selectedAnswer) {
+    switch (selection) {
       case "A":
-        _setAnswerA(AnswerStatusInList);
+        _setAnswerA(status);
         break;
       case "B":
-        _setAnswerB(AnswerStatusInList);
+        _setAnswerB(status);
         break;
       case "C":
-        _setAnswerC(AnswerStatusInList);
+        _setAnswerC(status);
         break;
       case "D":
-        _setAnswerD(AnswerStatusInList);
+        _setAnswerD(status);
         break;
-    }
-  };
-
-  const ClearAnswers = () => {
-    _setAnswerA("Empty");
-    _setAnswerB("Empty");
-    _setAnswerC("Empty");
-    _setAnswerD("Empty");
-    setSelectedData([]);
-  };
-
-  const SaveSelectedAnswers = (selectedAnswer: TAnswer) => {
-    setSelectedData([...selectedData, selectedAnswer]);
-  };
-
-  const ShowSelectedAnswers = () => {
-    if (allSelectedAnswers.length > 0 && allSelectedAnswers[index]) {
-      allSelectedAnswers[index].forEach((selected: TAnswer | String) => {
-        CheckAnswers(selected);
-      });
-    }
-  };
-
-  const CountCorrectAnswers = () => {
-    for (let i = 0; i < allSelectedAnswers.length; i++) {
-      const firstSelection = allSelectedAnswers[i][0];
-
-      if (firstSelection === quizData[i].correct_answer) {
-        dispatch({ type: "incrementResult" });
-      }
     }
   };
 
   const _onPressA = () => {
-    SaveSelectedAnswers("A");
-    CheckAnswers("A");
+    checkVariant("A");
   };
   const _onPressB = () => {
-    SaveSelectedAnswers("B");
-    CheckAnswers("B");
+    checkVariant("B");
   };
   const _onPressC = () => {
-    SaveSelectedAnswers("C");
-    CheckAnswers("C");
+    checkVariant("C");
   };
   const _onPressD = () => {
-    SaveSelectedAnswers("D");
-    CheckAnswers("D");
+    checkVariant("D");
   };
 
   // Go Next
   const onPressNext = () => {
-    setIndex(index + 1);
-    ClearAnswers();
-    setShowDetails(false);
+    _setAnswerA("Empty");
+    _setAnswerB("Empty");
+    _setAnswerC("Empty");
+    _setAnswerD("Empty");
 
-    if (selectedData.length > 0) {
-      setAllSelectedAnswers([...allSelectedAnswers, selectedData]);
+    if (selectedVariants[0] === quizData[index].correct_answer) {
+      dispatch({ type: "incrementResult" });
     }
 
-    _setPreviousButtonDisabled(false);
-    _setTestButtonDisabled(false);
-    _setNextButtonDisabled(true);
-  };
-
-  // Go back
-  const onPressPrevious = () => {
-    setIndex(index - 1);
-    ClearAnswers();
-    setShowDetails(true);
-
-    _setTestButtonDisabled(true);
-    _setNextButtonDisabled(false);
-  };
-
-  useEffect(() => {
-    ShowSelectedAnswers();
-
-    if (index === 0) {
-      _setPreviousButtonDisabled(true);
-    }
-
-    if (index === 3) {
-      navigation.navigate("QuizResultScreen");
-      CountCorrectAnswers();
-      ClearAnswers();
+    if (index === 2) {
       setIndex(0);
-      setAllSelectedAnswers([]);
+      navigation.navigate("QuizResultScreen");
+    } else {
+      setIndex(index + 1);
     }
-  }, [index]);
 
+    setSelectedVariants([]);
+    setIsNextDisabled(true);
+    setIsVariantDisabled(false);
+  };
+
+  // Get quiz data from database
   useEffect(() => {
-    getQuizData();
+    getQuizData().then((res) => {
+      setQuizData(res);
+    });
   }, []);
 
   return (
     <QuizScreenView
       index={index}
       onPressNext={onPressNext}
-      onPressPrevious={onPressPrevious}
       onPressA={_onPressA}
       onPressB={_onPressB}
       onPressC={_onPressC}
@@ -174,12 +100,9 @@ export const QuizScreen: FC<TQuizScreenProps> = ({ navigation }) => {
       AnswerB={_answerB}
       AnswerC={_answerC}
       AnswerD={_answerD}
-      AnswerStatus={_answerStatus}
-      showDetails={showDetails}
       data={quizData}
-      isNextButtonDisabled={_isNextButtonDisabled}
-      isPreviousButtonDisabled={_isPreviousButtonDisabled}
-      isTestButtonDisabled={_isTestButtonDisabled}
+      isNextDisabled={isNextDisabled}
+      isVariantDisabled={isVariantDisabled}
     />
   );
 };
